@@ -1,0 +1,1264 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F4A3763528B516E0009B1674 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A3763428B516E0009B1674 /* GoogleService-Info.plist */; };
+		F4A3763928B534A4009B1674 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3763828B534A4009B1674 /* AuthenticationViewModel.swift */; };
+		F4A3763C28B535EA009B1674 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F4A3763B28B535EA009B1674 /* GoogleSignIn */; };
+		F4A3763F28B53614009B1674 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F4A3763E28B53614009B1674 /* GoogleSignIn */; };
+		F4A3764228B53B73009B1674 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3764128B53B73009B1674 /* GoogleSignInButton.swift */; };
+		F4A3764428B53C98009B1674 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A3764328B53C98009B1674 /* LoginView.swift */; };
+		F4BD56C128B3CDDD0036ACAD /* PalpiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56C028B3CDDD0036ACAD /* PalpiApp.swift */; };
+		F4BD56C328B3CDDD0036ACAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56C228B3CDDD0036ACAD /* ContentView.swift */; };
+		F4BD56C528B3CDDF0036ACAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56C428B3CDDF0036ACAD /* Assets.xcassets */; };
+		F4BD56C828B3CDDF0036ACAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56C728B3CDDF0036ACAD /* Preview Assets.xcassets */; };
+		F4BD56D228B3CDDF0036ACAD /* PalpiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56D128B3CDDF0036ACAD /* PalpiTests.swift */; };
+		F4BD56DC28B3CDDF0036ACAD /* PalpiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56DB28B3CDDF0036ACAD /* PalpiUITests.swift */; };
+		F4BD56DE28B3CDDF0036ACAD /* PalpiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56DD28B3CDDF0036ACAD /* PalpiUITestsLaunchTests.swift */; };
+		F4BD56E228B3CDDF0036ACAD /* Palpi WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F4BD56E128B3CDDF0036ACAD /* Palpi WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4BD56E728B3CDE00036ACAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56E628B3CDE00036ACAD /* Assets.xcassets */; };
+		F4BD56ED28B3CDE00036ACAD /* Palpi WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F4BD56EC28B3CDE00036ACAD /* Palpi WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F4BD56F228B3CDE00036ACAD /* PalpiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */; };
+		F4BD56F428B3CDE00036ACAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F328B3CDE00036ACAD /* ContentView.swift */; };
+		F4BD56F628B3CDE00036ACAD /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F528B3CDE00036ACAD /* NotificationController.swift */; };
+		F4BD56F828B3CDE00036ACAD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F728B3CDE00036ACAD /* NotificationView.swift */; };
+		F4BD56FA28B3CDE00036ACAD /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F928B3CDE00036ACAD /* ComplicationController.swift */; };
+		F4BD56FC28B3CDE00036ACAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56FB28B3CDE00036ACAD /* Assets.xcassets */; };
+		F4BD56FF28B3CDE00036ACAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56FE28B3CDE00036ACAD /* Preview Assets.xcassets */; };
+		F4BD570B28B3CDE00036ACAD /* Palpi_WatchKit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD570A28B3CDE00036ACAD /* Palpi_WatchKit_AppTests.swift */; };
+		F4BD571528B3CDE00036ACAD /* Palpi_WatchKit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD571428B3CDE00036ACAD /* Palpi_WatchKit_AppUITests.swift */; };
+		F4BD571728B3CDE00036ACAD /* Palpi_WatchKit_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD571628B3CDE00036ACAD /* Palpi_WatchKit_AppUITestsLaunchTests.swift */; };
+		F4BD573328B450A00036ACAD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F4BD573228B450A00036ACAD /* FirebaseAuth */; };
+		F4C05BB128B53FC50054EC35 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C05BB028B53FC50054EC35 /* HomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4BD56CE28B3CDDF0036ACAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BD56B528B3CDDD0036ACAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BD56BC28B3CDDD0036ACAD;
+			remoteInfo = Palpi;
+		};
+		F4BD56D828B3CDDF0036ACAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BD56B528B3CDDD0036ACAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BD56BC28B3CDDD0036ACAD;
+			remoteInfo = Palpi;
+		};
+		F4BD56E328B3CDDF0036ACAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BD56B528B3CDDD0036ACAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BD56E028B3CDDF0036ACAD;
+			remoteInfo = "Palpi WatchKit App";
+		};
+		F4BD56EE28B3CDE00036ACAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BD56B528B3CDDD0036ACAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BD56EB28B3CDE00036ACAD;
+			remoteInfo = "Palpi WatchKit Extension";
+		};
+		F4BD570728B3CDE00036ACAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BD56B528B3CDDD0036ACAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BD56EB28B3CDE00036ACAD;
+			remoteInfo = "Palpi WatchKit Extension";
+		};
+		F4BD571128B3CDE00036ACAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BD56B528B3CDDD0036ACAD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BD56E028B3CDDF0036ACAD;
+			remoteInfo = "Palpi WatchKit App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4BD571D28B3CDE00036ACAD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F4BD56ED28B3CDE00036ACAD /* Palpi WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD572128B3CDE00036ACAD /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F4BD56E228B3CDDF0036ACAD /* Palpi WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F4A3763428B516E0009B1674 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4A3763628B5341E009B1674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F4A3763828B534A4009B1674 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		F4A3764128B53B73009B1674 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		F4A3764328B53C98009B1674 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F4BD56BD28B3CDDD0036ACAD /* Palpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Palpi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD56C028B3CDDD0036ACAD /* PalpiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalpiApp.swift; sourceTree = "<group>"; };
+		F4BD56C228B3CDDD0036ACAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F4BD56C428B3CDDF0036ACAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4BD56C728B3CDDF0036ACAD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F4BD56CD28B3CDDF0036ACAD /* PalpiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalpiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD56D128B3CDDF0036ACAD /* PalpiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalpiTests.swift; sourceTree = "<group>"; };
+		F4BD56D728B3CDDF0036ACAD /* PalpiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalpiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD56DB28B3CDDF0036ACAD /* PalpiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalpiUITests.swift; sourceTree = "<group>"; };
+		F4BD56DD28B3CDDF0036ACAD /* PalpiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalpiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F4BD56E128B3CDDF0036ACAD /* Palpi WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Palpi WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD56E628B3CDE00036ACAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4BD56EC28B3CDE00036ACAD /* Palpi WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Palpi WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalpiApp.swift; sourceTree = "<group>"; };
+		F4BD56F328B3CDE00036ACAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F4BD56F528B3CDE00036ACAD /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F4BD56F728B3CDE00036ACAD /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		F4BD56F928B3CDE00036ACAD /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		F4BD56FB28B3CDE00036ACAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F4BD56FE28B3CDE00036ACAD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F4BD570028B3CDE00036ACAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4BD570128B3CDE00036ACAD /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F4BD570628B3CDE00036ACAD /* Palpi WatchKit AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Palpi WatchKit AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD570A28B3CDE00036ACAD /* Palpi_WatchKit_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palpi_WatchKit_AppTests.swift; sourceTree = "<group>"; };
+		F4BD571028B3CDE00036ACAD /* Palpi WatchKit AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Palpi WatchKit AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BD571428B3CDE00036ACAD /* Palpi_WatchKit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palpi_WatchKit_AppUITests.swift; sourceTree = "<group>"; };
+		F4BD571628B3CDE00036ACAD /* Palpi_WatchKit_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palpi_WatchKit_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F4C05BB028B53FC50054EC35 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4BD56BA28B3CDDD0036ACAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD573328B450A00036ACAD /* FirebaseAuth in Frameworks */,
+				F4A3763C28B535EA009B1674 /* GoogleSignIn in Frameworks */,
+				F4A3763F28B53614009B1674 /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56CA28B3CDDF0036ACAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56D428B3CDDF0036ACAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56E928B3CDE00036ACAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD570328B3CDE00036ACAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD570D28B3CDE00036ACAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4A3763728B5348B009B1674 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56C228B3CDDD0036ACAD /* ContentView.swift */,
+				F4A3764328B53C98009B1674 /* LoginView.swift */,
+				F4C05BB028B53FC50054EC35 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F4A3764028B53B5D009B1674 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4A3763828B534A4009B1674 /* AuthenticationViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4BD56B428B3CDDD0036ACAD = {
+			isa = PBXGroup;
+			children = (
+				F4BD56BF28B3CDDD0036ACAD /* Palpi */,
+				F4A3763428B516E0009B1674 /* GoogleService-Info.plist */,
+				F4BD56D028B3CDDF0036ACAD /* PalpiTests */,
+				F4BD56DA28B3CDDF0036ACAD /* PalpiUITests */,
+				F4BD56E528B3CDDF0036ACAD /* Palpi WatchKit App */,
+				F4BD56F028B3CDE00036ACAD /* Palpi WatchKit Extension */,
+				F4BD570928B3CDE00036ACAD /* Palpi WatchKit AppTests */,
+				F4BD571328B3CDE00036ACAD /* Palpi WatchKit AppUITests */,
+				F4BD56BE28B3CDDD0036ACAD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4BD56BE28B3CDDD0036ACAD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56BD28B3CDDD0036ACAD /* Palpi.app */,
+				F4BD56CD28B3CDDF0036ACAD /* PalpiTests.xctest */,
+				F4BD56D728B3CDDF0036ACAD /* PalpiUITests.xctest */,
+				F4BD56E128B3CDDF0036ACAD /* Palpi WatchKit App.app */,
+				F4BD56EC28B3CDE00036ACAD /* Palpi WatchKit Extension.appex */,
+				F4BD570628B3CDE00036ACAD /* Palpi WatchKit AppTests.xctest */,
+				F4BD571028B3CDE00036ACAD /* Palpi WatchKit AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4BD56BF28B3CDDD0036ACAD /* Palpi */ = {
+			isa = PBXGroup;
+			children = (
+				F4A3763628B5341E009B1674 /* Info.plist */,
+				F4BD56C028B3CDDD0036ACAD /* PalpiApp.swift */,
+				F4A3764028B53B5D009B1674 /* Models */,
+				F4A3763728B5348B009B1674 /* Views */,
+				F4BD56C428B3CDDF0036ACAD /* Assets.xcassets */,
+				F4BD56C628B3CDDF0036ACAD /* Preview Content */,
+				F4A3764128B53B73009B1674 /* GoogleSignInButton.swift */,
+			);
+			path = Palpi;
+			sourceTree = "<group>";
+		};
+		F4BD56C628B3CDDF0036ACAD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56C728B3CDDF0036ACAD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4BD56D028B3CDDF0036ACAD /* PalpiTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56D128B3CDDF0036ACAD /* PalpiTests.swift */,
+			);
+			path = PalpiTests;
+			sourceTree = "<group>";
+		};
+		F4BD56DA28B3CDDF0036ACAD /* PalpiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56DB28B3CDDF0036ACAD /* PalpiUITests.swift */,
+				F4BD56DD28B3CDDF0036ACAD /* PalpiUITestsLaunchTests.swift */,
+			);
+			path = PalpiUITests;
+			sourceTree = "<group>";
+		};
+		F4BD56E528B3CDDF0036ACAD /* Palpi WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56E628B3CDE00036ACAD /* Assets.xcassets */,
+			);
+			path = "Palpi WatchKit App";
+			sourceTree = "<group>";
+		};
+		F4BD56F028B3CDE00036ACAD /* Palpi WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */,
+				F4BD56F328B3CDE00036ACAD /* ContentView.swift */,
+				F4BD56F528B3CDE00036ACAD /* NotificationController.swift */,
+				F4BD56F728B3CDE00036ACAD /* NotificationView.swift */,
+				F4BD56F928B3CDE00036ACAD /* ComplicationController.swift */,
+				F4BD56FB28B3CDE00036ACAD /* Assets.xcassets */,
+				F4BD570028B3CDE00036ACAD /* Info.plist */,
+				F4BD570128B3CDE00036ACAD /* PushNotificationPayload.apns */,
+				F4BD56FD28B3CDE00036ACAD /* Preview Content */,
+			);
+			path = "Palpi WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		F4BD56FD28B3CDE00036ACAD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD56FE28B3CDE00036ACAD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4BD570928B3CDE00036ACAD /* Palpi WatchKit AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD570A28B3CDE00036ACAD /* Palpi_WatchKit_AppTests.swift */,
+			);
+			path = "Palpi WatchKit AppTests";
+			sourceTree = "<group>";
+		};
+		F4BD571328B3CDE00036ACAD /* Palpi WatchKit AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F4BD571428B3CDE00036ACAD /* Palpi_WatchKit_AppUITests.swift */,
+				F4BD571628B3CDE00036ACAD /* Palpi_WatchKit_AppUITestsLaunchTests.swift */,
+			);
+			path = "Palpi WatchKit AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4BD56BC28B3CDDD0036ACAD /* Palpi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD572228B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi" */;
+			buildPhases = (
+				F4BD56B928B3CDDD0036ACAD /* Sources */,
+				F4BD56BA28B3CDDD0036ACAD /* Frameworks */,
+				F4BD56BB28B3CDDD0036ACAD /* Resources */,
+				F4BD572128B3CDE00036ACAD /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BD56E428B3CDDF0036ACAD /* PBXTargetDependency */,
+			);
+			name = Palpi;
+			packageProductDependencies = (
+				F4BD573228B450A00036ACAD /* FirebaseAuth */,
+				F4A3763B28B535EA009B1674 /* GoogleSignIn */,
+				F4A3763E28B53614009B1674 /* GoogleSignIn */,
+			);
+			productName = Palpi;
+			productReference = F4BD56BD28B3CDDD0036ACAD /* Palpi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4BD56CC28B3CDDF0036ACAD /* PalpiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD572528B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "PalpiTests" */;
+			buildPhases = (
+				F4BD56C928B3CDDF0036ACAD /* Sources */,
+				F4BD56CA28B3CDDF0036ACAD /* Frameworks */,
+				F4BD56CB28B3CDDF0036ACAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BD56CF28B3CDDF0036ACAD /* PBXTargetDependency */,
+			);
+			name = PalpiTests;
+			productName = PalpiTests;
+			productReference = F4BD56CD28B3CDDF0036ACAD /* PalpiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4BD56D628B3CDDF0036ACAD /* PalpiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD572828B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "PalpiUITests" */;
+			buildPhases = (
+				F4BD56D328B3CDDF0036ACAD /* Sources */,
+				F4BD56D428B3CDDF0036ACAD /* Frameworks */,
+				F4BD56D528B3CDDF0036ACAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BD56D928B3CDDF0036ACAD /* PBXTargetDependency */,
+			);
+			name = PalpiUITests;
+			productName = PalpiUITests;
+			productReference = F4BD56D728B3CDDF0036ACAD /* PalpiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F4BD56E028B3CDDF0036ACAD /* Palpi WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD571E28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit App" */;
+			buildPhases = (
+				F4BD56DF28B3CDDF0036ACAD /* Resources */,
+				F4BD571D28B3CDE00036ACAD /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BD56EF28B3CDE00036ACAD /* PBXTargetDependency */,
+			);
+			name = "Palpi WatchKit App";
+			productName = "Palpi WatchKit App";
+			productReference = F4BD56E128B3CDDF0036ACAD /* Palpi WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F4BD56EB28B3CDE00036ACAD /* Palpi WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD571A28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit Extension" */;
+			buildPhases = (
+				F4BD56E828B3CDE00036ACAD /* Sources */,
+				F4BD56E928B3CDE00036ACAD /* Frameworks */,
+				F4BD56EA28B3CDE00036ACAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Palpi WatchKit Extension";
+			productName = "Palpi WatchKit Extension";
+			productReference = F4BD56EC28B3CDE00036ACAD /* Palpi WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		F4BD570528B3CDE00036ACAD /* Palpi WatchKit AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD572B28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit AppTests" */;
+			buildPhases = (
+				F4BD570228B3CDE00036ACAD /* Sources */,
+				F4BD570328B3CDE00036ACAD /* Frameworks */,
+				F4BD570428B3CDE00036ACAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BD570828B3CDE00036ACAD /* PBXTargetDependency */,
+			);
+			name = "Palpi WatchKit AppTests";
+			productName = "Palpi WatchKit AppTests";
+			productReference = F4BD570628B3CDE00036ACAD /* Palpi WatchKit AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F4BD570F28B3CDE00036ACAD /* Palpi WatchKit AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BD572E28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit AppUITests" */;
+			buildPhases = (
+				F4BD570C28B3CDE00036ACAD /* Sources */,
+				F4BD570D28B3CDE00036ACAD /* Frameworks */,
+				F4BD570E28B3CDE00036ACAD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BD571228B3CDE00036ACAD /* PBXTargetDependency */,
+			);
+			name = "Palpi WatchKit AppUITests";
+			productName = "Palpi WatchKit AppUITests";
+			productReference = F4BD571028B3CDE00036ACAD /* Palpi WatchKit AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4BD56B528B3CDDD0036ACAD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					F4BD56BC28B3CDDD0036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F4BD56CC28B3CDDF0036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F4BD56BC28B3CDDD0036ACAD;
+					};
+					F4BD56D628B3CDDF0036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F4BD56BC28B3CDDD0036ACAD;
+					};
+					F4BD56E028B3CDDF0036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F4BD56EB28B3CDE00036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F4BD570528B3CDE00036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F4BD56EB28B3CDE00036ACAD;
+					};
+					F4BD570F28B3CDE00036ACAD = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = F4BD56E028B3CDDF0036ACAD;
+					};
+				};
+			};
+			buildConfigurationList = F4BD56B828B3CDDD0036ACAD /* Build configuration list for PBXProject "Palpi" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4BD56B428B3CDDD0036ACAD;
+			packageReferences = (
+				F4BD573128B4509F0036ACAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F4A3763A28B535EA009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				F4A3763D28B53614009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			productRefGroup = F4BD56BE28B3CDDD0036ACAD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4BD56BC28B3CDDD0036ACAD /* Palpi */,
+				F4BD56CC28B3CDDF0036ACAD /* PalpiTests */,
+				F4BD56D628B3CDDF0036ACAD /* PalpiUITests */,
+				F4BD56E028B3CDDF0036ACAD /* Palpi WatchKit App */,
+				F4BD56EB28B3CDE00036ACAD /* Palpi WatchKit Extension */,
+				F4BD570528B3CDE00036ACAD /* Palpi WatchKit AppTests */,
+				F4BD570F28B3CDE00036ACAD /* Palpi WatchKit AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4BD56BB28B3CDDD0036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD56C828B3CDDF0036ACAD /* Preview Assets.xcassets in Resources */,
+				F4BD56C528B3CDDF0036ACAD /* Assets.xcassets in Resources */,
+				F4A3763528B516E0009B1674 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56CB28B3CDDF0036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56D528B3CDDF0036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56DF28B3CDDF0036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD56E728B3CDE00036ACAD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56EA28B3CDE00036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD56FF28B3CDE00036ACAD /* Preview Assets.xcassets in Resources */,
+				F4BD56FC28B3CDE00036ACAD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD570428B3CDE00036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD570E28B3CDE00036ACAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4BD56B928B3CDDD0036ACAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4A3764228B53B73009B1674 /* GoogleSignInButton.swift in Sources */,
+				F4A3763928B534A4009B1674 /* AuthenticationViewModel.swift in Sources */,
+				F4BD56C328B3CDDD0036ACAD /* ContentView.swift in Sources */,
+				F4C05BB128B53FC50054EC35 /* HomeView.swift in Sources */,
+				F4A3764428B53C98009B1674 /* LoginView.swift in Sources */,
+				F4BD56C128B3CDDD0036ACAD /* PalpiApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56C928B3CDDF0036ACAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD56D228B3CDDF0036ACAD /* PalpiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56D328B3CDDF0036ACAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD56DC28B3CDDF0036ACAD /* PalpiUITests.swift in Sources */,
+				F4BD56DE28B3CDDF0036ACAD /* PalpiUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD56E828B3CDE00036ACAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD56F628B3CDE00036ACAD /* NotificationController.swift in Sources */,
+				F4BD56F428B3CDE00036ACAD /* ContentView.swift in Sources */,
+				F4BD56FA28B3CDE00036ACAD /* ComplicationController.swift in Sources */,
+				F4BD56F228B3CDE00036ACAD /* PalpiApp.swift in Sources */,
+				F4BD56F828B3CDE00036ACAD /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD570228B3CDE00036ACAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD570B28B3CDE00036ACAD /* Palpi_WatchKit_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BD570C28B3CDE00036ACAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BD571728B3CDE00036ACAD /* Palpi_WatchKit_AppUITestsLaunchTests.swift in Sources */,
+				F4BD571528B3CDE00036ACAD /* Palpi_WatchKit_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4BD56CF28B3CDDF0036ACAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BD56BC28B3CDDD0036ACAD /* Palpi */;
+			targetProxy = F4BD56CE28B3CDDF0036ACAD /* PBXContainerItemProxy */;
+		};
+		F4BD56D928B3CDDF0036ACAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BD56BC28B3CDDD0036ACAD /* Palpi */;
+			targetProxy = F4BD56D828B3CDDF0036ACAD /* PBXContainerItemProxy */;
+		};
+		F4BD56E428B3CDDF0036ACAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BD56E028B3CDDF0036ACAD /* Palpi WatchKit App */;
+			targetProxy = F4BD56E328B3CDDF0036ACAD /* PBXContainerItemProxy */;
+		};
+		F4BD56EF28B3CDE00036ACAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BD56EB28B3CDE00036ACAD /* Palpi WatchKit Extension */;
+			targetProxy = F4BD56EE28B3CDE00036ACAD /* PBXContainerItemProxy */;
+		};
+		F4BD570828B3CDE00036ACAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BD56EB28B3CDE00036ACAD /* Palpi WatchKit Extension */;
+			targetProxy = F4BD570728B3CDE00036ACAD /* PBXContainerItemProxy */;
+		};
+		F4BD571228B3CDE00036ACAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BD56E028B3CDDF0036ACAD /* Palpi WatchKit App */;
+			targetProxy = F4BD571128B3CDE00036ACAD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F4BD571828B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F4BD571928B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		F4BD571B28B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Palpi WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Palpi WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Palpi WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.Palpi.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		F4BD571C28B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Palpi WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Palpi WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Palpi WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.Palpi.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		F4BD571F28B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Palpi_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Palpi WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.paulchirms.Palpi;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.Palpi.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		F4BD572028B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Palpi_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Palpi WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.paulchirms.Palpi;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.Palpi.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		F4BD572328B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Palpi/Preview Content\"";
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Palpi/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.Palpi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F4BD572428B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Palpi/Preview Content\"";
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Palpi/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.Palpi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4BD572628B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.PalpiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Palpi.app/Palpi";
+			};
+			name = Debug;
+		};
+		F4BD572728B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.PalpiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Palpi.app/Palpi";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4BD572928B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.PalpiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Palpi;
+			};
+			name = Debug;
+		};
+		F4BD572A28B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.paulchirms.PalpiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Palpi;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4BD572C28B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulchirms.Palpi-WatchKit-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Palpi WatchKit Extension.appex/Palpi WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		F4BD572D28B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulchirms.Palpi-WatchKit-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Palpi WatchKit Extension.appex/Palpi WatchKit Extension";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		F4BD572F28B3CDE00036ACAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulchirms.Palpi-WatchKit-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Palpi WatchKit App";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		F4BD573028B3CDE00036ACAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V45ZS863W6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.paulchirms.Palpi-WatchKit-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Palpi WatchKit App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4BD56B828B3CDDD0036ACAD /* Build configuration list for PBXProject "Palpi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD571828B3CDE00036ACAD /* Debug */,
+				F4BD571928B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD571A28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD571B28B3CDE00036ACAD /* Debug */,
+				F4BD571C28B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD571E28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD571F28B3CDE00036ACAD /* Debug */,
+				F4BD572028B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD572228B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD572328B3CDE00036ACAD /* Debug */,
+				F4BD572428B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD572528B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "PalpiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD572628B3CDE00036ACAD /* Debug */,
+				F4BD572728B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD572828B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "PalpiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD572928B3CDE00036ACAD /* Debug */,
+				F4BD572A28B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD572B28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD572C28B3CDE00036ACAD /* Debug */,
+				F4BD572D28B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BD572E28B3CDE00036ACAD /* Build configuration list for PBXNativeTarget "Palpi WatchKit AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BD572F28B3CDE00036ACAD /* Debug */,
+				F4BD573028B3CDE00036ACAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4A3763A28B535EA009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		F4A3763D28B53614009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F4BD573128B4509F0036ACAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4A3763B28B535EA009B1674 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4A3763A28B535EA009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		F4A3763E28B53614009B1674 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4A3763D28B53614009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		F4BD573228B450A00036ACAD /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4BD573128B4509F0036ACAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F4BD56B528B3CDDD0036ACAD /* Project object */;
+}
