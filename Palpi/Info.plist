@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>App requested permission to read samples from the HealthKit store</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>App requested permission to save samples to the HealthKit store</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>App requested permission to read clinical records</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -12,6 +18,13 @@
 				<string>com.googleusercontent.apps.209156978072-oung8aategenudlemo08js0n6430aatf</string>
 			</array>
 		</dict>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>fetch</string>
+		<string>processing</string>
 	</array>
 </dict>
 </plist>

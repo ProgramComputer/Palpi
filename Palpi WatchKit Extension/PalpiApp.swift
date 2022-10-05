@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct PalpiApp: App {
+    static let name: String = "Palpi"
+
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {

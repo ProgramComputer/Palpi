@@ -16,7 +16,7 @@ struct PalpiApp: App {
       }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(viewModel)
         }
     }
 }

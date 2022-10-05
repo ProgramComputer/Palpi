@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  AccountView.swift
 //  Palpi
 //
 //  Created by  on 8/23/22.
@@ -8,12 +8,20 @@
 import SwiftUI
 import GoogleSignIn
 
-struct HomeView: View{
+struct AccountView: View{
     @EnvironmentObject var viewModel: AuthenticationViewModel
     
     private let user = GIDSignIn.sharedInstance.currentUser
-    
+    init() {
+
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
+        }
+    @Environment(\.presentationMode) var presentationMode
+    @State private var isShowingSettingsView = false
+
     var body: some View{
+
         NavigationView{
             
             VStack{
@@ -36,8 +44,29 @@ struct HomeView: View{
                 Button(action: viewModel.signOut){
                     Text("Sign out").foregroundColor(.white).padding().frame(maxWidth:.infinity).background(Color(.systemIndigo)).cornerRadius(12).padding()
                 }
-            }.navigationTitle("Palpi")
+            }.navigationTitle("Palpi").toolbar {
+                
+                NavigationLink(  destination: SettingsView(), isActive: $isShowingSettingsView){
+                    Image(systemName: "gearshape" ).resizable()
+                }
+            
+                
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarTitle(Text("Profile"), displayMode: .inline)
+        .edgesIgnoringSafeArea(.bottom)
+        // Hide the system back button
+        .navigationBarBackButtonHidden(true)
+        // Add your custom back button here
+        .navigationBarItems(leading:
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                HStack {
+                    Image(systemName: "chevron.backward")
+                    
+                }
+        })
         
         
     }
@@ -61,9 +90,9 @@ struct NetworkImage: View{
 }
 
 
-struct HomeView_Previews: PreviewProvider {
+struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        AccountView().environmentObject(AuthenticationViewModel())
     }
 }
 
