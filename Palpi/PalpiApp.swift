@@ -7,9 +7,14 @@
 
 import SwiftUI
 import Firebase
-@main
+import FirebaseDatabase
 
+@main
 struct PalpiApp: App {
+    // This delegate manages the life cycle of the app.
+    static let name: String = "Palpi"
+
+    @UIApplicationDelegateAdaptor var delegate: ApplicationDelegate
     @StateObject var viewModel = AuthenticationViewModel()
     init() {
         setupAuthentication()
@@ -23,6 +28,8 @@ struct PalpiApp: App {
 extension PalpiApp{
     private func setupAuthentication(){
         FirebaseApp.configure()
+       // Database.database().isPersistenceEnabled = true //when ready
+
     }
     
 }

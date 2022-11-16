@@ -8,6 +8,10 @@
 	<string>App requested permission to save samples to the HealthKit store</string>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>App requested permission to read clinical records</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+<string>The app uses bluetooth to find, connect and transfer data between different devices</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>The app uses bluetooth to find, connect and transfer data between different devices</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

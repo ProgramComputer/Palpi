@@ -28,15 +28,17 @@ struct DetailsView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-      
-        VStack(alignment: .leading) {
-          
-            if let fileURL = Bundle.main.url(forResource: "LICENSE", withExtension: "txt") {
-                let contents = (try? String(contentsOf: fileURL, encoding: .utf8)) ?? " "
-            
-            Text(contents)
-                .padding(.top)
+        ScrollView {
+            VStack(alignment: .leading) {
+                
+                if let fileURL = Bundle.main.url(forResource: "LICENSE", withExtension: "txt") {
+                    let contents = (try? String(contentsOf: fileURL, encoding: .utf8)) ?? " "
+                    
+                    Text(contents)
+                        .padding(.top)  .lineLimit(nil)
+                }
             }
+        .frame(maxWidth: .infinity)
             
             Spacer()
         }

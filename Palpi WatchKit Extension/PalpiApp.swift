@@ -10,14 +10,15 @@ import SwiftUI
 @main
 struct PalpiApp: App {
     static let name: String = "Palpi"
+  //  @WKExtensionDelegateAdaptor var delegate: ExtensionDelegate
 
-    @SceneBuilder var body: some Scene {
+     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                //ContentView().environmentObject(delegate.bluetoothReceiver)
             }
         }
 
-        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
+      //  WKNotificationScene(controller: NotificationController.self, category: "myCategory")
     }
 }

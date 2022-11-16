@@ -19,11 +19,7 @@ class AuthenticationViewModel: ObservableObject{
     }
     
     @Published var state: SignInState = .signedOut
-    init(){
-        FirebaseApp.configure()
-        Database.database().isPersistenceEnabled = true
-
-    }
+    
     func signIn(){
         if GIDSignIn.sharedInstance.hasPreviousSignIn(){
             GIDSignIn.sharedInstance.restorePreviousSignIn(){
@@ -39,8 +35,10 @@ class AuthenticationViewModel: ObservableObject{
             
             guard let rootViewController = windowScene.windows.first?.rootViewController else {return}
             
-            GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController){
-                [unowned self] user, error in authenticateUser(for: user, with: error)
+            GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController)
+            {
+                [unowned self] user, error in
+                authenticateUser(for: user, with: error)
             }
         }
         
@@ -67,88 +65,141 @@ class AuthenticationViewModel: ObservableObject{
         }
         
         guard let authentication = user?.authentication, let idToken = authentication.idToken else {return}
-     
+        
         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        print(userID)
+        
         Auth.auth().signIn(with: credential){[unowned self](_,error) in
-             if let error = error{
+            if let error = error{
                 print(error.localizedDescription)
             }else{
+                
                 self.state = .signedIn
+               
                 
                 
-                  let uid = Auth.auth().currentUser?.uid
-//
-//                 lazy var databasePath: DatabaseReference? = {
-//                  // 1
-//                  guard let uid = Auth.auth().currentUser?.uid else {
-//                    return nil
-//                  }
-//
-//                  // 2
-//                  let ref = Database.database()
-//                    .reference()
-//                    .child("users/\(uid)/UUID")
-//                  return ref
-//
-//                }()
-                var ref = Database.database().reference()
-//                guard let databasePath = databasePath else {
-//                  return
-//                }
-                ref.child("users/\(uid)/UUID").observeSingleEvent(of: .value, with: {[weak self] snapshot in
-                    if snapshot.exists(){
-                    }else{
+                
+                
+                
+                
+                
+                    
+                    
+                    
+                    let uid = Auth.auth().currentUser?.uid
+                    //
+                    //                 lazy var databasePath: DatabaseReference? = {
+                    //                  // 1
+                    //                  guard let uid = Auth.auth().currentUser?.uid else {
+                    //                    return nil
+                    //                  }
+                    //
+                    //                  // 2
+                    //                  let ref = Database.database()
+                    //                    .reference()
+                    //                    .child("users/\(uid)/UUID")
+                    //                  return ref
+                    //
+                    //                }()
+                    var ref = Database.database().reference()
+                    //                guard let databasePath = databasePath else {
+                    //                  return
+                    //                }
+                ref.child("users").child(uid!).child("UUID").observeSingleEvent(of: .value, with: {[weak self] snapshot in
                         do{
-                            guard
-                                  let self = self,
-                                  var json = snapshot.value as? [String: Any]
+                      
+                            if snapshot.exists(){
+                                guard var json = snapshot.value as? [String: Any]
                                 else {
-                                  return
+                                    return
                                 }
-                        let UUIDData = try JSONSerialization.data(withJSONObject: json)
-                        let decoder = JSONDecoder()
-
-                        // 6
-                        let thought = try decoder.decode(UUIDModel.self, from: UUIDData)
-                        
-                       
-                         
-
-                            // 3
-                            let newUUID = UUIDModel(uid:uid!,uuid: CBUUID().uuidString)
-
+                                print(json)
+                                json["id"] = snapshot.key
+                                let UUIDData = try JSONSerialization.data(withJSONObject: json)
                             
-                              let encoder = JSONEncoder()
+                                let decoder = JSONDecoder()
+                                
+                                // 6
+                                let oldUUID = try decoder.decode(UUIDModel.self, from: UUIDData)
 
-
-                              // 4
-                              let data = try encoder.encode(newUUID)
-
-                              // 5
-                               let jsonSend = try JSONSerialization.jsonObject(with: data)
-
-                              // 6
-                                ref.childByAutoId().setValue(jsonSend)
-                            } catch {
-                              print("an error occurred", error)
+                                
+                                BluetoothConstants.characteristicUUID = CBUUID(string: oldUUID.uuid)
+                                
+                            }else{
+                                
+                            
+                                // 3
+                                let newUUID = UUIDModel(uid:uid!,uuid: CBUUID(string: UUID().uuidString).uuidString)
+                                
+                                
+                                let encoder = JSONEncoder()
+                                
+                                
+                                // 4
+                                let data = try encoder.encode(newUUID)
+                                
+                                // 5
+                                let jsonSend = try JSONSerialization.jsonObject(with: data)
+                                
+                                // 6
+                                ref.child("users").child(uid!).child("UUID").setValue(jsonSend)
+                                
+                                
+                                BluetoothConstants.characteristicUUID = CBUUID(string: newUUID.uuid)
+                                
+                                
                             }
-                                        }
-                })
-//                databasePath.getData(completion:  { error, snapshot in
-//                  guard error == nil else {
-//                    print(error!.localizedDescription)
-//                    return;
-//                  }
-                  
+                        }
+                        catch{
+                            print(error)
+                        }
+                    ref.removeAllObservers()
+
+                        //                databasePath.getData(completion:  { error, snapshot in
+                        //                  guard error == nil else {
+                        //                    print(error!.localizedDescription)
+                        //                    return;
+                        //                  }
+                        
+                        
+                        
+                    }) { error in
+                        print(error.localizedDescription)
+                      };
                     
-                    
-             //   });
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
             }
+            
         }
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+ 
     }
+    
+    
+    
+    
 }
