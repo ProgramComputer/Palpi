@@ -80,24 +80,26 @@ struct NonBlinkingView: View {
 
 
 struct Polar:  View {
-    @State var connections = 0;
+   // @State var connections = 0;
+    @Binding var connections: Int;
+    
     var body: some View {
-        
-        
+
             GeometryReader { geometry in
-                ZStack(alignment: .center) {
-                Arc().stroke(Color.pink, lineWidth: 3).frame(maxWidth: geometry.size.width).zIndex(0)
-                BlinkingView(name: "heart.circle.fill",size: geometry.size.width/10/*50*/)//.alignmentGuide(VerticalAlignment.center)
-            
-            //Add functionality to keep adding Circles to view and done based on relative distance
-                    if connections >= 1{
-                     
-                    ForEach((1...connections), id: \.self) { connection in
-                        NonBlinkingView(name: "heart.fill",size: geometry.size.width/14/*25*/).offset(x: CGFloat.random(in: 1..<geometry.size.width),y: CGFloat.random(in: 1..<geometry.size.height))
+                if geometry.size != .zero {
+                    ZStack(alignment: .center) {
+                        Arc().stroke(Color.pink, lineWidth: 3).frame(maxWidth: geometry.size.width).zIndex(0)
+                        BlinkingView(name: "heart.circle.fill",size: geometry.size.width/10/*50*/)//.alignmentGuide(VerticalAlignment.center)
+                        
+                        //Add functionality to keep adding Circles to view and done based on relative distance
+                        if connections >= 1{
+                            ForEach((1...connections), id: \.self) { connection in
+                                NonBlinkingView(name: "heart.fill",size: geometry.size.width/14/*25*/).offset(x: CGFloat.random(in: 1..<geometry.size.width/2),y: CGFloat.random(in: 1..<geometry.size.width/2))
+                            }
+                        }
+                        
                     }
-                    }
-            
-            }
+                }
         }.scaledToFit()
         
        // .border(Color.blue, width: 3)
@@ -106,9 +108,9 @@ struct Polar:  View {
    
 }
 
-struct RadarView_Previews: PreviewProvider {
-    static var previews: some View {
-       
-        Polar(connections: 2)
-    }
-}
+//struct RadarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+//           Polar(connections: 2)
+//    }
+//}

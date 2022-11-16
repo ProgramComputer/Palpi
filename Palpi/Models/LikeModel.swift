@@ -9,16 +9,18 @@ import SwiftUI
 
 final class ViewModel: ObservableObject {
     
-    private(set) var connectivityProvider: ConnectivityProvider
-    var userID: String = ""
+//    private(set) var sessionDelegator: SessionDelegator
+//    var userID: String = ""
+//
+//    init(sessionDelegator: SessionDelegator) {
+//        self.sessionDelegator = sessionDelegator
+//    }
     
-    init(connectivityProvider: ConnectivityProvider) {
-        self.connectivityProvider = connectivityProvider
-    }
+//    func sendMessage() -> Void {
+//        let txt = userID
+//        let message = ["message":txt]
+//    //sessionnDelegator.send(message: message)
+//    }
     
-    func sendMessage() -> Void {
-        let txt = userID
-        let message = ["message":txt]
-        connectivityProvider.send(message: message)
-    }
+    
 }

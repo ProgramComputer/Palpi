@@ -11,9 +11,8 @@ import FirebaseDatabase
 
 @main
 struct PalpiApp: App {
-    // This delegate manages the life cycle of the app.
     static let name: String = "Palpi"
-
+    // This delegate manages the life cycle of the app.
     @UIApplicationDelegateAdaptor var delegate: ApplicationDelegate
     @StateObject var viewModel = AuthenticationViewModel()
     init() {
@@ -21,7 +20,7 @@ struct PalpiApp: App {
       }
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(viewModel)
+            ContentView(modelData: modelData).environmentObject(viewModel).environmentObject(modelData)
         }
     }
 }

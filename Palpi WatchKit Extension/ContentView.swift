@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+        @State var test = 0;
 
     var body: some View {
       //  Text("Hello, World!")
         //    .padding()
         VStack{
         Spacer()
-        Polar()
+         //   Polar(connections: test)
         }
         
     }

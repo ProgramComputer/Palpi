@@ -8,6 +8,22 @@
 ///
 import CoreBluetooth
 import os.log
+protocol BluetoothReceiverDelegate: AnyObject {
+    func didReceiveData(_ message: Data) -> Int
+    func didCompleteDisconnection(from peripheral: CBPeripheral, mustDisconnect: Bool)
+    func didFailWithError(_ error: BluetoothReceiverError)
+}
+enum BluetoothReceiverError: Error {
+    case failedToConnect
+    case failedToDiscoverCharacteristics
+    case failedToDiscoverServices
+    case failedToReceiveCharacteristicUpdate
+}
+let modelData: ModelData = ModelData()
+
+class ModelData : ObservableObject {
+    @Published var count: Int = 0 // Gets an array of ItemDetail from the defaults
+}
 class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     private var logger = Logger(
@@ -15,9 +31,9 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         category: String(describing: BluetoothReceiver.self)
     )
     
-   // var notificationHandler = ExtensionDelegate.instance.notificationHandler
-
-  //  weak var delegate: BluetoothReceiverDelegate? = nil
+    var notificationHandler = ApplicationDelegate.instance.notificationHandler
+    var potentionalMatches = 0;
+    weak var delegate: BluetoothReceiverDelegate? = nil
     
     var centralManager: CBCentralManager!
     
@@ -33,12 +49,11 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     
     @Published private(set) var isScanning: Bool = false
     
-    var scanToAlert = false
+    var scanToAlert = true
     
     var mustDisconnect = false
     
     @Published var discoveredPeripherals = Set<CBPeripheral>()
-    
     init(service: CBUUID, characteristic: CBUUID) {
         super.init()
         self.serviceUUID = service
@@ -55,6 +70,8 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         ])
         
         discoveredPeripherals.removeAll()
+            modelData.count = discoveredPeripherals.count
+        print("HERE\(modelData.count)")
         isScanning = true
     }
     
@@ -96,13 +113,22 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
             if #available(watchOS 9, *) {
                 logger.info("sending notification from advertising")
                 let alertValue = 99
-               // notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(alertValue), unit: UnitTemperature.celsius))
+                notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(alertValue), unit: UnitTemperature.celsius))
                 UserDefaults.standard.setValue(alertValue, forKey: BluetoothConstants.receivedDataKey)
+                discoveredPeripherals.insert(peripheral)
+                if(modelData.count != discoveredPeripherals.count){
+                    modelData.count = discoveredPeripherals.count
+                }
+
             //    ComplicationController.updateAllActiveComplications()
             }
         } else if peripheral != connectedPeripheral, !discoveredPeripherals.contains(peripheral) {
                 logger.info("discovered \(peripheral.name ?? "unnamed peripheral")")
                 discoveredPeripherals.insert(peripheral)
+                modelData.count = discoveredPeripherals.count
+            print("HERE2\(modelData.count)")
+
+
                 peripheral.delegate = self
             }
     }
@@ -114,6 +140,10 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         logger.info("connected to \(peripheral.name ?? "unnamed peripheral")")
         discoveredPeripherals.remove(peripheral)
+            modelData.count = discoveredPeripherals.count
+        print("HERE3\(modelData.count)")
+
+
         connectedPeripheral = peripheral
         knownDisconnectedPeripheral = nil
         peripheral.discoverServices([BluetoothConstants.serviceUUID])
@@ -128,7 +158,7 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         /// Keep track of the last known peripheral.
         knownDisconnectedPeripheral = peripheral
         
-      //  delegate?.didCompleteDisconnection(from: peripheral, mustDisconnect: self.mustDisconnect)
+        delegate?.didCompleteDisconnection(from: peripheral, mustDisconnect: self.mustDisconnect)
         self.mustDisconnect = false
     }
     
@@ -137,13 +167,13 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let error = error {
             logger.error("error discovering service: \(error.localizedDescription)")
-          //  delegate?.didFailWithError(.failedToDiscoverServices)
+            delegate?.didFailWithError(.failedToDiscoverServices)
             return
         }
         
         guard let service = peripheral.services?.first(where: { $0.uuid == serviceUUID }) else {
             logger.info("no valid services on \(peripheral.name ?? "unnamed peripheral")")
-          //  delegate?.didFailWithError(.failedToDiscoverServices)
+            delegate?.didFailWithError(.failedToDiscoverServices)
             return
         }
         
@@ -161,13 +191,13 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error? ) {
         if let error = error {
             logger.error("error discovering characteristic: \(error.localizedDescription)")
-         //   delegate?.didFailWithError(.failedToDiscoverCharacteristics)
+            delegate?.didFailWithError(.failedToDiscoverCharacteristics)
             return
         }
         
         guard let characteristics = service.characteristics, !characteristics.isEmpty else {
             logger.info("no characteristics discovered on \(peripheral.name ?? "unnamed peripheral") for service \(service.description)")
-      //      delegate?.didFailWithError(.failedToDiscoverCharacteristics)
+            delegate?.didFailWithError(.failedToDiscoverCharacteristics)
             return
         }
         
@@ -187,18 +217,18 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         guard error == nil else {
             logger.error("\(peripheral.name ?? "unnamed peripheral") failed to update value: \(error!.localizedDescription)")
-        //    delegate?.didFailWithError(.failedToReceiveCharacteristicUpdate)
+            delegate?.didFailWithError(.failedToReceiveCharacteristicUpdate)
             return
         }
         
         guard let data = characteristic.value else {
             logger.warning("characteristic value from \(peripheral.name ?? "unnamed peripheral") is nil")
-         //   delegate?.didFailWithError(.failedToReceiveCharacteristicUpdate)
+            delegate?.didFailWithError(.failedToReceiveCharacteristicUpdate)
             return
         }
         
         logger.info("\(peripheral.name ?? "unnamed peripheral") did update characteristic: \(data)")
-      //  let value = delegate?.didReceiveData(data) ?? -1
+      let value = delegate?.didReceiveData(data) ?? -1
         //TODO do match notification below
 //        if #available(watchOS 9, *) {
 //            if value > BluetoothConstants.normalTemperatureLimit {
