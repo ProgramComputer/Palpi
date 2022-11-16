@@ -24,3 +24,9 @@ final class ViewModel: ObservableObject {
     
     
 }
+class ModelData : ObservableObject {
+    @Published var count: Int = 0 // Gets an array of ItemDetail from the defaults
+   
+
+   
+}

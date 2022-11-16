@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct PalpiApp: App {
     static let name: String = "Palpi"
-  //  @WKExtensionDelegateAdaptor var delegate: ExtensionDelegate
+    @WKApplicationDelegateAdaptor var delegate: ExtensionDelegate
 
      var body: some Scene {
         WindowGroup {

@@ -8,6 +8,9 @@
 ///
 import CoreBluetooth
 import os.log
+import WatchConnectivity
+
+
 protocol BluetoothReceiverDelegate: AnyObject {
     func didReceiveData(_ message: Data) -> Int
     func didCompleteDisconnection(from peripheral: CBPeripheral, mustDisconnect: Bool)
@@ -21,9 +24,7 @@ enum BluetoothReceiverError: Error {
 }
 let modelData: ModelData = ModelData()
 
-class ModelData : ObservableObject {
-    @Published var count: Int = 0 // Gets an array of ItemDetail from the defaults
-}
+
 class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     private var logger = Logger(
@@ -71,7 +72,6 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         
         discoveredPeripherals.removeAll()
             modelData.count = discoveredPeripherals.count
-        print("HERE\(modelData.count)")
         isScanning = true
     }
     
@@ -118,6 +118,8 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
                 discoveredPeripherals.insert(peripheral)
                 if(modelData.count != discoveredPeripherals.count){
                     modelData.count = discoveredPeripherals.count
+                    let watchConnect: [String: Int] = ["count":modelData.count]
+                    WCSession.default.transferUserInfo(watchConnect)
                 }
 
             //    ComplicationController.updateAllActiveComplications()
@@ -126,7 +128,6 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
                 logger.info("discovered \(peripheral.name ?? "unnamed peripheral")")
                 discoveredPeripherals.insert(peripheral)
                 modelData.count = discoveredPeripherals.count
-            print("HERE2\(modelData.count)")
 
 
                 peripheral.delegate = self
@@ -141,7 +142,6 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         logger.info("connected to \(peripheral.name ?? "unnamed peripheral")")
         discoveredPeripherals.remove(peripheral)
             modelData.count = discoveredPeripherals.count
-        print("HERE3\(modelData.count)")
 
 
         connectedPeripheral = peripheral

@@ -94,7 +94,7 @@ struct Polar:  View {
                         //Add functionality to keep adding Circles to view and done based on relative distance
                         if connections >= 1{
                             ForEach((1...connections), id: \.self) { connection in
-                                NonBlinkingView(name: "heart.fill",size: geometry.size.width/14/*25*/).offset(x: CGFloat.random(in: 1..<geometry.size.width/2),y: CGFloat.random(in: 1..<geometry.size.width/2))
+                                NonBlinkingView(name: "heart.fill",size: geometry.size.width/14/*25*/).offset(x: CGFloat.random(in: 1..<geometry.size.width/4),y: CGFloat.random(in: 1..<geometry.size.width/4))
                             }
                         }
                         
