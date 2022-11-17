@@ -17,7 +17,13 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
         return SessionDelegator()
     }()
    
-    
+    @Published var modelData: ModelData = ModelData(){didSet {
+         if oldValue.count < modelData.count {
+             print(modelData.count)
+             notificationHandler.requestUserNotification(temperature: Measurement(value: Double(99), unit: UnitTemperature.celsius))
+         }
+       }
+     }
     
     static private(set) var instance: ApplicationDelegate! = nil
     var bluetoothSender: BluetoothSender!

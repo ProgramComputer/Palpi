@@ -88,13 +88,19 @@ struct Polar:  View {
             GeometryReader { geometry in
                 if geometry.size != .zero {
                     ZStack(alignment: .center) {
-                        Arc().stroke(Color.pink, lineWidth: 3).frame(maxWidth: geometry.size.width).zIndex(0)
+                        Arc().stroke(Color.pink, lineWidth: 3).frame(maxWidth: geometry.size.width).zIndex(0)            .coordinateSpace(name: "Arc")
+                  
+
                         BlinkingView(name: "heart.circle.fill",size: geometry.size.width/10/*50*/)//.alignmentGuide(VerticalAlignment.center)
                         
                         //Add functionality to keep adding Circles to view and done based on relative distance
                         if connections >= 1{
+                            let r = CGFloat.random(in: geometry.size.width/10..<geometry.size.width/2)
+
+                            let x = r * cos(CGFloat.random(in: 0..<2*Double.pi))
+                            let y = r *  sin(CGFloat.random(in: 0..<2*Double.pi))
                             ForEach((1...connections), id: \.self) { connection in
-                                NonBlinkingView(name: "heart.fill",size: geometry.size.width/14/*25*/).offset(x: CGFloat.random(in: 1..<geometry.size.width/4),y: CGFloat.random(in: 1..<geometry.size.width/4))
+                                NonBlinkingView(name: "heart.fill",size: geometry.size.width/14/*25*/).offset(x: x,y: y)
                             }
                         }
                         

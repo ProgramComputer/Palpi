@@ -7,11 +7,11 @@
 
 import WatchConnectivity
 
-class SessionDelegator: NSObject, WCSessionDelegate {
+class SessionDelegator: NSObject, WCSessionDelegate,ObservableObject {
  
     
     private let session: WCSession
-    
+   
     init(session: WCSession = .default) {
         self.session = session
         super.init()
@@ -25,6 +25,10 @@ class SessionDelegator: NSObject, WCSessionDelegate {
         }
        
         session.activate()
+      #if os(iOS)
+        let watchConnect: [String: Int] = ["count":ApplicationDelegate.instance.modelData.count]
+        WCSession.default.transferUserInfo(watchConnect)
+        #endif
     }
     
     func send(message: [String:Any]) -> Void {
@@ -45,6 +49,36 @@ class SessionDelegator: NSObject, WCSessionDelegate {
         
        
       //  postNotificationOnMainQueueAsync(name: .dataDidFlow, object: commandStatus)
+    }
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {
+        let key = "count"
+        guard let count = userInfo[key] as? Int else {
+            return
+        }
+
+        DispatchQueue.main.async{
+#if os(watchOS)
+            
+            if(count > 0 && count >   ExtensionDelegate.instance.modelData.count  )
+            {
+                ExtensionDelegate.instance.modelData.count = count
+                ExtensionDelegate.instance.notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(99), unit: UnitTemperature.celsius))
+            }
+            
+          
+#endif
+#if os(iOS)
+   ApplicationDelegate.instance.modelData.count = count
+#endif
+
+
+          
+               }
+        
+     
+     
+    
+
     }
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         // code
@@ -75,6 +109,11 @@ func sessionDidDeactivate(_ session: WCSession) {
 
 func sessionWatchStateDidChange(_ session: WCSession) {
     print("\(#function): activationState = \(session.activationState.rawValue)")
+    if(session.activationState == .activated){
+  let watchConnect: [String: Int] = ["count":ApplicationDelegate.instance.modelData.count]
+  WCSession.default.transferUserInfo(watchConnect)
+ 
+    }
 }
 #endif
 }

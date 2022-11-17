@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: AuthenticationViewModel
-    @ObservedObject var modelData: ModelData
+    @EnvironmentObject  var viewModel: AuthenticationViewModel
+    
+   // @ObservedObject var modelData: ModelData
  
     var body: some View {
-        let _ = print("HELLLOO\( modelData.count)")
+        let _ =    UserDefaults.standard.set(self.viewModel.state.rawValue, forKey: "login")
+
         switch viewModel.state{
         case .signedIn: FindView()
         case .signedOut: LoginView().onAppear{

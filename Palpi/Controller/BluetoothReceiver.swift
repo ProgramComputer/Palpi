@@ -22,7 +22,6 @@ enum BluetoothReceiverError: Error {
     case failedToDiscoverServices
     case failedToReceiveCharacteristicUpdate
 }
-let modelData: ModelData = ModelData()
 
 
 class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -31,9 +30,10 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         subsystem: PalpiApp.name,
         category: String(describing: BluetoothReceiver.self)
     )
-    
+   
     var notificationHandler = ApplicationDelegate.instance.notificationHandler
-    var potentionalMatches = 0;
+    let modelData: ModelData = ApplicationDelegate.instance.modelData
+    
     weak var delegate: BluetoothReceiverDelegate? = nil
     
     var centralManager: CBCentralManager!
@@ -111,13 +111,16 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber ) {
         if scanToAlert {
             if #available(watchOS 9, *) {
-                logger.info("sending notification from advertising")
+                //logger.info("sending notification from advertising")
                 let alertValue = 99
-                notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(alertValue), unit: UnitTemperature.celsius))
+              
                 UserDefaults.standard.setValue(alertValue, forKey: BluetoothConstants.receivedDataKey)
                 discoveredPeripherals.insert(peripheral)
-                if(modelData.count != discoveredPeripherals.count){
+                if(viewModel.state == .signedIn && modelData.count != discoveredPeripherals.count){
+                    notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(alertValue), unit: UnitTemperature.celsius))
                     modelData.count = discoveredPeripherals.count
+                    UserDefaults.standard.setValue(modelData.count, forKey: "count")
+
                     let watchConnect: [String: Int] = ["count":modelData.count]
                     WCSession.default.transferUserInfo(watchConnect)
                 }

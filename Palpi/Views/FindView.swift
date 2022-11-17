@@ -11,7 +11,6 @@ struct FindView: View {
     @EnvironmentObject private var data: ModelData
 
     var body: some View {
-        let w = print(data.count)
 //        let _ = {
 //
 //            while(true){

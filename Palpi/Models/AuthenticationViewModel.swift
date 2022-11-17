@@ -13,7 +13,7 @@ import CoreBluetooth
 
 class AuthenticationViewModel: ObservableObject{
     
-    enum SignInState{
+    enum SignInState:Int{
         case signedIn
         case signedOut
     }

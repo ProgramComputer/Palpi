@@ -25,8 +25,8 @@ final class ViewModel: ObservableObject {
     
 }
 class ModelData : ObservableObject {
-    @Published var count: Int = 0 // Gets an array of ItemDetail from the defaults
-   
+    @Published var count: Int =  UserDefaults.standard.integer( forKey: "count")
+ // Gets an array of ItemDetail from the defaults
 
    
 }

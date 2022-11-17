@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct PalpiApp: App {
     static let name: String = "Palpi"
-    @WKApplicationDelegateAdaptor var delegate: ExtensionDelegate
+    @WKExtensionDelegateAdaptor var delegate: ExtensionDelegate
 
      var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()//.environmentObject(delegate.bluetoothReceiver)
+                ContentView().environmentObject(delegate.modelData)//.environmentObject(delegate.bluetoothReceiver)
             }
         }
 
