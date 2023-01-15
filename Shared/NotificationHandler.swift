@@ -24,7 +24,7 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         notificationCenter.delegate = self
     }
  
-    func requestUserNotification(temperature: Measurement<UnitTemperature>) {
+    func requestUserNotification(temperature: Measurement<UnitTemperature>, elevated: Bool = false) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
               success, error in
                   if !success {
@@ -35,7 +35,12 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
 
                       let content = UNMutableNotificationContent()
                       content.title = "Heart Alert"
-                      content.body = "You found a match"//"It is \(temperatureString)\(temperatureSymbol)"
+                      if elevated{
+                          content.body = "Your heartRate elevated"
+                      }
+                      else{
+                          content.body = "You found a match"//"It is \(temperatureString)\(temperatureSymbol)"
+                      }
                       content.sound = UNNotificationSound.default
                                
                       let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)

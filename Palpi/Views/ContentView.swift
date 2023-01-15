@@ -6,26 +6,41 @@
 //
 
 import SwiftUI
-
 struct ContentView: View {
     @EnvironmentObject  var viewModel: AuthenticationViewModel
-    
+    @State var isSplashActive:Bool = true
    // @ObservedObject var modelData: ModelData
  
     var body: some View {
         let _ =    UserDefaults.standard.set(self.viewModel.state.rawValue, forKey: "login")
-
-        switch viewModel.state{
-        case .signedIn: FindView()
-        case .signedOut: LoginView().onAppear{
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(TurnOnBackground.backgroundRefreshStatusDidChange),
-                name: UIApplication.backgroundRefreshStatusDidChangeNotification, object: nil)
-            
-            
-            
-        }
+        VStack{
+            if !self.isSplashActive{
+                switch viewModel.state{
+                case .signedIn:
+                    FindView()
+                case .signedOut: LoginView().onAppear{
+                    NotificationCenter.default.addObserver(
+                        self,
+                        selector: #selector(TurnOnBackground.backgroundRefreshStatusDidChange),
+                        name: UIApplication.backgroundRefreshStatusDidChangeNotification, object: nil)
+                    
+                    
+                    
+                }
+                }
+            }
+            else{
+                SwiftUIGIFPlayerView(gifName: "Palpi-Logo").ignoresSafeArea()
+                
+            }
+        }      .onAppear {
+            // 6.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                // 7.
+                withAnimation {
+                    self.isSplashActive = false
+                }
+            }
         }
     }
     

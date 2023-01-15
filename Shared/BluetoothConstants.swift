@@ -25,6 +25,8 @@ enum BluetoothConstants {
     /// The defaults key to use for persisting the most recently received data.
     static let receivedDataKey = "received-data"
     
+    //readRSSI from CBIPeripheral TODO
+    
    
 }
 

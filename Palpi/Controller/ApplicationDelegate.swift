@@ -7,12 +7,16 @@
 
 
 import UIKit
+import HealthKit
 import CoreBluetooth
 import WatchConnectivity
 
 
 
 class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDelegate,BluetoothReceiverDelegate {
+    // MARK: - Properties
+
+    private let healthStore = HKHealthStore()
     private lazy var sessionDelegator: SessionDelegator = {
         return SessionDelegator()
     }()
@@ -29,6 +33,8 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
     var bluetoothSender: BluetoothSender!
     var bluetoothReceiver: BluetoothReceiver!
     private(set) var notificationHandler: NotificationHandler!
+    private var hkkit:HKKit!
+
 
     var peripheralValue: Measurement<UnitTemperature> {
         /// Calculates a mock temperature value based on the current time of day.
@@ -51,6 +57,7 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
         
         ApplicationDelegate.instance = self
         notificationHandler = NotificationHandler()
+        hkkit = HKKit();
 
         /// Initialize the Bluetooth sender with a service and a characteristic.
         let service = CBMutableService(type: BluetoothConstants.serviceUUID, primary: true)
@@ -136,6 +143,38 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
         } else {
             return nil
         }
+    }
+    //MARK: HEALTHKIT
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+        // Authorize access to health data for watch.
+        healthStore.handleAuthorizationForExtension { success, error in
+            print(success)
+        }
+    }
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        hkkit.subscribeToHeartBeatChanges()
+      //  HealthKit.metadata
+        guard let sampleType: HKSampleType =
+                /*HKObjectType.categoryType(forIdentifier: .highHeartRateEvent)*/ //TODO
+                HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)
+
+        else { //heart rate variability sdnn TODO
+            return true
+        }
+        hkkit.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (success, error) in
+            if let unwrappedError = error {
+                print("could not enable background delivery KJ: \(unwrappedError)")
+            }
+            if success {
+                print("background delivery enabled KJ")
+            }
+        }
+            if let hrq = hkkit.heartRateQuery {
+                self.healthStore.execute(hrq)
+            }
+           
+        return true
     }
 }
 

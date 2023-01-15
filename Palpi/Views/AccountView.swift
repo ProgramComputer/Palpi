@@ -21,13 +21,12 @@ struct AccountView: View{
     @State private var isShowingSettingsView = false
 
     var body: some View{
-
         NavigationView{
             
             VStack{
                 HStack{
                     
-                    NetworkImage(url: user?.profile?.imageURL(withDimension: 200)).aspectRatio(contentMode:.fit).frame(width:100,height: 100, alignment: .center).cornerRadius(8)
+                    NetworkImage(url: user!.profile!.imageURL(withDimension: 200)).aspectRatio(contentMode:.fit).frame(width:100,height: 100, alignment: .center).cornerRadius(8)
                     
                     
                     VStack(alignment: .leading) {
@@ -44,16 +43,15 @@ struct AccountView: View{
                 Button(action: viewModel.signOut){
                     Text("Sign out").foregroundColor(.white).padding().frame(maxWidth:.infinity).background(Color(.systemIndigo)).cornerRadius(12).padding()
                 }
-            }.navigationTitle("Palpi").toolbar {
-                
-                NavigationLink(  destination: SettingsView(), isActive: $isShowingSettingsView){
-                    Image(systemName: "gearshape" ).resizable()
-                }
-            
+            }.navigationTitle("Palpi")
+        }.navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarTitle(Text("Profile"), displayMode: .inline).toolbar{ToolbarItemGroup(placement: .navigationBarTrailing){
+                    NavigationLink(  destination: SettingsView(), isActive: $isShowingSettingsView){
+                        Image(systemName: "gearshape" ).resizable()
+                    }
                 
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarTitle(Text("Profile"), displayMode: .inline)
+                                                                               }
         .edgesIgnoringSafeArea(.bottom)
         // Hide the system back button
         .navigationBarBackButtonHidden(true)
@@ -61,6 +59,7 @@ struct AccountView: View{
         .navigationBarItems(leading:
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
+            
             }) {
                 HStack {
                     Image(systemName: "chevron.backward")
@@ -78,14 +77,22 @@ struct NetworkImage: View{
     let url: URL?
     
     var body: some View{
-        if let url = url,
-           let data = try? Data(contentsOf: url),
-            let uiImage = UIImage(data: data){
-            Image(uiImage: uiImage).resizable().aspectRatio(contentMode: .fit)
-        }
-        else{
-            Image(systemName: "person.circle.fill").resizable().aspectRatio(contentMode: .fit)
-        }
+//        if let url = url,
+//           let data = try? Data(contentsOf: url),
+//            let uiImage = UIImage(data: data){
+//            Image(uiImage: uiImage).resizable().aspectRatio(contentMode: .fit)
+//        }
+//        else{
+//            Image(systemName: "person.circle.fill").resizable().aspectRatio(contentMode: .fit)
+//        }
+        AsyncImage(
+            url: url,
+            content: { image in
+                image.resizable().aspectRatio(contentMode: .fit)
+            },
+            placeholder: {
+                Image(systemName: "person.circle.fill").resizable().aspectRatio(contentMode: .fit)            }
+        )
     }
 }
 

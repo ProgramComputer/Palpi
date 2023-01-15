@@ -11,6 +11,10 @@ import SwiftUI
 struct PalpiApp: App {
     static let name: String = "Palpi"
     @WKExtensionDelegateAdaptor var delegate: ExtensionDelegate
+    @StateObject private var workoutManager = WorkoutManager()
+    init() {
+        workoutManager.start();
+      }
 
      var body: some Scene {
         WindowGroup {

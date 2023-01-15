@@ -17,10 +17,11 @@ struct PalpiApp: App {
     @UIApplicationDelegateAdaptor var delegate: ApplicationDelegate
     init() {
         setupAuthentication()
-        viewModel.state = AuthenticationViewModel.SignInState(rawValue: UserDefaults.standard.integer(forKey: "login") ) ?? .signedOut
+     //  viewModel.state = /*AuthenticationViewModel.SignInState(/*rawValue: UserDefaults.standard.integer(forKey: "login")*/ ) ??*/ .signedOut
       }
     var body: some Scene {
         WindowGroup {
+
             ContentView().environmentObject(viewModel).environmentObject(delegate.modelData)
         }
     }
@@ -28,7 +29,9 @@ struct PalpiApp: App {
 extension PalpiApp{
     private func setupAuthentication(){
         FirebaseApp.configure()
-       // Database.database().isPersistenceEnabled = true //when ready
+        viewModel.signIn()
+
+        Database.database().isPersistenceEnabled = true //when ready TODO
 
     }
     

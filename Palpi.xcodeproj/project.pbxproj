@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		F40B39062924C3D600AE6772 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB048228ED699E0085E9E4 /* NotificationHandler.swift */; };
 		F40B39082924E15F00AE6772 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */; };
+		F434D7282973B62500AA4775 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D7272973B62500AA4775 /* SwiftUIView.swift */; };
+		F434D72C2973B6EC00AA4775 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D72B2973B6EC00AA4775 /* PlayerView.swift */; };
+		F434D72E2973BBF800AA4775 /* Palpi-Logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F434D72D2973BBF800AA4775 /* Palpi-Logo.gif */; };
 		F457A0FF28EDB86E007F50DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */; };
 		F457A10028EDB86F007F50DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */; };
 		F457A10128EDB86F007F50DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */; };
@@ -16,6 +19,10 @@
 		F457A10328EDB870007F50DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */; };
 		F457A10428EDB872007F50DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */; };
 		F457A10528EDB872007F50DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */; };
+		F469B0832937AE0100F67806 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469B0822937AE0100F67806 /* WorkoutManager.swift */; };
+		F469B0852937AE0900F67806 /* HeartRateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469B0842937AE0900F67806 /* HeartRateManager.swift */; };
+		F469B0872937AE1700F67806 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469B0862937AE1700F67806 /* AuthorizationManager.swift */; };
+		F469B0892937AF2500F67806 /* HeartRateM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F469B0882937AF2500F67806 /* HeartRateM.swift */; };
 		F4800BAE2924A2DF00506F1D /* BluetoothReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB048428ED6A530085E9E4 /* BluetoothReceiver.swift */; };
 		F4800BB02924A6FC00506F1D /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4800BAF2924A6FC00506F1D /* ApplicationDelegate.swift */; };
 		F4800BB22924A81500506F1D /* BluetoothSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4800BB12924A81500506F1D /* BluetoothSender.swift */; };
@@ -137,7 +144,14 @@
 
 /* Begin PBXFileReference section */
 		F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionDelegate.swift; path = "../../../ImplementingTwoWayCommunicationUsingWatchConnectivity/SimpleWatchConnectivity WatchKit Extension/ExtensionDelegate.swift"; sourceTree = "<group>"; };
+		F434D7272973B62500AA4775 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		F434D72B2973B6EC00AA4775 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		F434D72D2973BBF800AA4775 /* Palpi-Logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Palpi-Logo.gif"; sourceTree = "<group>"; };
 		F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F469B0822937AE0100F67806 /* WorkoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		F469B0842937AE0900F67806 /* HeartRateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateManager.swift; sourceTree = "<group>"; };
+		F469B0862937AE1700F67806 /* AuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		F469B0882937AF2500F67806 /* HeartRateM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateM.swift; sourceTree = "<group>"; };
 		F4800BAF2924A6FC00506F1D /* ApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		F4800BB12924A81500506F1D /* BluetoothSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSender.swift; sourceTree = "<group>"; };
 		F4A3763628B5341E009B1674 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -249,6 +263,16 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		F469B0812937ADD900F67806 /* Heartrate */ = {
+			isa = PBXGroup;
+			children = (
+				F469B0822937AE0100F67806 /* WorkoutManager.swift */,
+				F469B0842937AE0900F67806 /* HeartRateManager.swift */,
+				F469B0862937AE1700F67806 /* AuthorizationManager.swift */,
+			);
+			path = Heartrate;
+			sourceTree = "<group>";
+		};
 		F4A3763728B5348B009B1674 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +283,9 @@
 				F4FB7BB528C19EF400267D7D /* FindView.swift */,
 				F4FB7BB728C19F5B00267D7D /* RadarView.swift */,
 				F4D6051B28D8E84D001526B4 /* SettingsView.swift */,
+				F434D7272973B62500AA4775 /* SwiftUIView.swift */,
+				F434D72D2973BBF800AA4775 /* Palpi-Logo.gif */,
+				F434D72B2973B6EC00AA4775 /* PlayerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				F4A3763828B534A4009B1674 /* AuthenticationViewModel.swift */,
+				F469B0882937AF2500F67806 /* HeartRateM.swift */,
 				F4DE758728EC9ADB00FCEA28 /* LikeModel.swift */,
 				F4DE758C28ECC21A00FCEA28 /* UUIDModel.swift */,
 			);
@@ -356,6 +384,7 @@
 		F4BD56F028B3CDE00036ACAD /* Palpi WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F469B0812937ADD900F67806 /* Heartrate */,
 				F4F1AB2C28DADB2F0066F0CE /* Palpi WatchKit Extension.entitlements */,
 				F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */,
 				F4BD56F328B3CDE00036ACAD /* ContentView.swift */,
@@ -627,6 +656,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F434D72E2973BBF800AA4775 /* Palpi-Logo.gif in Resources */,
 				F4BD56C828B3CDDF0036ACAD /* Preview Assets.xcassets in Resources */,
 				F4BD56C528B3CDDF0036ACAD /* Assets.xcassets in Resources */,
 				F457A0FF28EDB86E007F50DE /* GoogleService-Info.plist in Resources */,
@@ -699,7 +729,9 @@
 				F40B39062924C3D600AE6772 /* NotificationHandler.swift in Sources */,
 				F4BD56C328B3CDDD0036ACAD /* ContentView.swift in Sources */,
 				F4DE758528EC9A0E00FCEA28 /* SessionDelegator.swift in Sources */,
+				F434D7282973B62500AA4775 /* SwiftUIView.swift in Sources */,
 				F4FB7BB628C19EF400267D7D /* FindView.swift in Sources */,
+				F434D72C2973B6EC00AA4775 /* PlayerView.swift in Sources */,
 				F4C05BB128B53FC50054EC35 /* AccountView.swift in Sources */,
 				F4800BB22924A81500506F1D /* BluetoothSender.swift in Sources */,
 				F4A3764428B53C98009B1674 /* LoginView.swift in Sources */,
@@ -709,6 +741,7 @@
 				F4EB048728ED6B4E0085E9E4 /* BluetoothConstants.swift in Sources */,
 				F4800BB02924A6FC00506F1D /* ApplicationDelegate.swift in Sources */,
 				F4FB7BB828C19F5B00267D7D /* RadarView.swift in Sources */,
+				F469B0892937AF2500F67806 /* HeartRateM.swift in Sources */,
 				F4800BAE2924A2DF00506F1D /* BluetoothReceiver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,8 +769,10 @@
 			files = (
 				F4DE758928EC9ADB00FCEA28 /* LikeModel.swift in Sources */,
 				F4DE758628EC9A0E00FCEA28 /* SessionDelegator.swift in Sources */,
+				F469B0872937AE1700F67806 /* AuthorizationManager.swift in Sources */,
 				F40B39082924E15F00AE6772 /* ExtensionDelegate.swift in Sources */,
 				F4EB048328ED699E0085E9E4 /* NotificationHandler.swift in Sources */,
+				F469B0852937AE0900F67806 /* HeartRateManager.swift in Sources */,
 				F4DE758E28ECC21A00FCEA28 /* UUIDModel.swift in Sources */,
 				F4BD56F628B3CDE00036ACAD /* NotificationController.swift in Sources */,
 				F4D6051A28D8E7DB001526B4 /* RadarView.swift in Sources */,
@@ -745,6 +780,7 @@
 				F4BD56FA28B3CDE00036ACAD /* ComplicationController.swift in Sources */,
 				F4BD56F228B3CDE00036ACAD /* PalpiApp.swift in Sources */,
 				F4EB048828ED6B4E0085E9E4 /* BluetoothConstants.swift in Sources */,
+				F469B0832937AE0100F67806 /* WorkoutManager.swift in Sources */,
 				F4BD56F828B3CDE00036ACAD /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1073,7 +1109,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1108,7 +1144,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

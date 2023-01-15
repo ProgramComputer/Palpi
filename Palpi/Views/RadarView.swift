@@ -41,6 +41,7 @@ struct BlinkingView: View {
     @State private var animate = true
 
     var body: some View {
+        
        let animation = animate ? Animation.default.repeatForever(autoreverses: false) : Animation.easeOut(duration: 0.5)
         Image(systemName: name ).resizable()
             .frame(width: size, height: size)
@@ -54,10 +55,16 @@ struct BlinkingView: View {
             // ON: Background circle opacity 0.2
             // In between on and off? My buddy SwiftUI will figure it out! Awesome!
           //  .background( Circle().foregroundColor(.blue).opacity(animate ? 0.2 : 0.4) )
+            
             .onAppear{  DispatchQueue.main.async {
                 withAnimation(animation) {
-                    self.animate.toggle()                }
+                   self.animate.toggle()
+                   
+                    
+                }
             }
+}.onDisappear {
+    self.animate = true
 }
     }
 }

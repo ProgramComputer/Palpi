@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct FindView: View {
-    @State private var isShowingAccountView = false
+   // @State private var isShowingAccountView = false
     @EnvironmentObject private var data: ModelData
 
     var body: some View {
@@ -17,19 +17,20 @@ struct FindView: View {
 //                print(data.count)
 //            }
 //        }
-              NavigationView {
-                  Polar(connections: $data.count) //TODO: currently receiving potential matches
-                .navigationBarTitle("Search").multilineTextAlignment(.center)
-                .toolbar {
-                
-                NavigationLink(  destination: AccountView(), isActive: $isShowingAccountView){
-                    Image(systemName: "person" ).resizable()
-                }
-                
-                
-            
-                }
+            NavigationStack {
+                Polar(connections: $data.count) //TODO: currently receiving potential matches
+                    .navigationBarTitle("Search").multilineTextAlignment(.center)
+                    .toolbar {
+                        
+                        NavigationLink(  destination: AccountView()/*, isActive: $isShowingAccountView*/){
+                            Image(systemName: "person" ).resizable()
+                        }
+                        
+                        
+                        
+                    }
             }.navigationViewStyle(StackNavigationViewStyle())
+        
         
 }
 }

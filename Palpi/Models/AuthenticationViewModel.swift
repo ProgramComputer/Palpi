@@ -21,7 +21,7 @@ class AuthenticationViewModel: ObservableObject{
     @Published var state: SignInState = .signedOut
     
     func signIn(){
-        if GIDSignIn.sharedInstance.hasPreviousSignIn(){
+        if GIDSignIn.sharedInstance.hasPreviousSignIn() && GIDSignIn.sharedInstance.currentUser == nil{
             GIDSignIn.sharedInstance.restorePreviousSignIn(){
                 [unowned self] user, error in
                 authenticateUser(for: user, with: error)
@@ -60,6 +60,7 @@ class AuthenticationViewModel: ObservableObject{
     private func authenticateUser(for user: GIDGoogleUser?, with error: Error?){
         
         if let error = error{
+            self.state = .signedOut
             print(error.localizedDescription)
             return
         }
