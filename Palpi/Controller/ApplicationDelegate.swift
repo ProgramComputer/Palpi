@@ -148,7 +148,7 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
     func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
         // Authorize access to health data for watch.
         healthStore.handleAuthorizationForExtension { success, error in
-            print(success)
+            print("Authorization was a \(success)")
         }
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -170,10 +170,26 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
                 print("background delivery enabled KJ")
             }
         }
+        hkkit.healthStore.enableBackgroundDelivery(for: HKObjectType.categoryType(forIdentifier: .highHeartRateEvent)!, frequency: .immediate) { (success, error) in
+            if let unwrappedError = error {
+                print("could not enable background delivery KJ: \(unwrappedError)")
+            }
+            if success {
+                print("background delivery enabled KJ")
+            }
+        }
+        hkkit.healthStore.enableBackgroundDelivery(for: HKObjectType.categoryType(forIdentifier: .lowHeartRateEvent)!, frequency: .immediate) { (success, error) in
+            if let unwrappedError = error {
+                print("could not enable background delivery KJ: \(unwrappedError)")
+            }
+            if success {
+                print("background delivery enabled KJ")
+            }
+        }
             if let hrq = hkkit.heartRateQuery {
                 self.healthStore.execute(hrq)
             }
-           
+
         return true
     }
 }

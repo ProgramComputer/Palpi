@@ -8,7 +8,7 @@
 
 import Foundation
 import HealthKit
-
+import StatKit
 //https://developer.apple.com/documentation/healthkit/hkhealthstore/1614175-enablebackgrounddelivery#discussion
 class HKKit{
     var notificationHandler = ApplicationDelegate.instance.notificationHandler
@@ -34,11 +34,23 @@ class HKKit{
                 }
                 /// When the completion is called, an other query is executed
                 /// to fetch the latest heart rate
-                self?.fetchLatestHeartRateSample(completion: { sample in
+                self?.fetchLatestHeartRateSample(type: .heartRate,completion: { sample in
                     guard let sample = sample else {
                         return
                     }
-                    
+//                    self?.fetchLatestHeartRateSample(type: .heartRateVariabilitySDNN,completion: { sample in
+//                        guard let sample = sample else {
+//                            print("hello")
+//                            return
+//                        }
+//                        let heartRateUnit = HKUnit(from: "ms")
+//                        let sdnn = sample
+//                            .quantity
+//                            .doubleValue(for: heartRateUnit)
+//                        print("sdnn")
+//                        print(sdnn)
+//
+//                    })
                     /// The completion in called on a background thread, but we
                     /// need to update the UI on the main.
                     DispatchQueue.main.async {
@@ -58,11 +70,11 @@ class HKKit{
             }
     }
     
-    public func fetchLatestHeartRateSample(
+    public func fetchLatestHeartRateSample(type: HKQuantityTypeIdentifier,
         completion: @escaping (_ sample: HKQuantitySample?) -> Void) {
             /// Create sample type for the heart rate
             guard let sampleType = HKObjectType
-                .quantityType(forIdentifier: .heartRate) else {
+                .quantityType(forIdentifier: type) else {
                 completion(nil)
                 return
             }
@@ -70,8 +82,8 @@ class HKKit{
             /// Predicate for specifiying start and end dates for the query
             let predicate = HKQuery
                 .predicateForSamples(
-                    withStart: Date.distantPast,
-                    end: Date(),
+                    withStart: .now - 1000,// Date.distantPast, //TODO change the dates
+                    end: .now,// Date(),
                     options: .strictEndDate)
             
             /// Set sorting by date.
@@ -90,10 +102,24 @@ class HKKit{
                         print("Error: \(error!.localizedDescription)")
                         return
                     }
-                    
+                    if type == .heartRate{
+                        let heartRateUnit = HKUnit(from: "count/min")
+                        let doubleResults = self.quantityToDouble(quantities: results as! [HKQuantitySample], unit: heartRateUnit)
+                        let calculatedSTD = standardDeviation(of: doubleResults, variable: \.self, from: .sample)
+                        print("Std")
+                        print(calculatedSTD)
+                    }
                     completion(results?[0] as? HKQuantitySample)
                 }
             
             self.healthStore.execute(query)
         }
+    private func quantityToDouble(quantities:[HKQuantitySample],unit:HKUnit) -> [Double]{
+
+        var doubleArr = [Double]()
+        for quantity in quantities {
+            doubleArr.append(  quantity.quantity.doubleValue(for: unit))
+        }
+        return doubleArr
+    }
 }

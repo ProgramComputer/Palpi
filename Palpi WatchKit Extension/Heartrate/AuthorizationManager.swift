@@ -20,7 +20,9 @@ class AuthorizationManager {
             completionHandler(false)
             return
         }
-
+        let allTypes = Set([
+                            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!,
+                            HKObjectType.quantityType(forIdentifier: .heartRate)!]) //TODO add types to set
         // Create quantity type for heart rate.
         guard let heartRateQuantityType = HKQuantityType.quantityType(forIdentifier: .heartRate) else {
             print("Unable to create quantity type for heart rate.")
@@ -29,7 +31,7 @@ class AuthorizationManager {
         }
 
         // Request authorization to read heart rate data.
-        healthStore.requestAuthorization(toShare: nil, read: [heartRateQuantityType]) {
+        healthStore.requestAuthorization(toShare: nil, read: allTypes) {
             
             (success, error) -> Void in
             // If there is an error, do nothing.
