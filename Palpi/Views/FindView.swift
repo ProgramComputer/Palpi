@@ -35,8 +35,8 @@ struct FindView: View {
 }
 }
 
-//struct FindView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FindView().environmentObject(AuthenticationViewModel())
-//    }
-//}
+struct FindView_Previews: PreviewProvider {
+    static var previews: some View {
+        FindView().environmentObject(AuthenticationViewModel())
+    }
+}

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F408AE2129C2B41B00D0373A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F408AE2029C2B41B00D0373A /* Settings.bundle */; };
 		F40B39062924C3D600AE6772 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB048228ED699E0085E9E4 /* NotificationHandler.swift */; };
 		F40B39082924E15F00AE6772 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */; };
+		F42118D929C0BE2100E6F1B5 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F42118D829C0BE2100E6F1B5 /* PythonKit */; };
 		F434D7282973B62500AA4775 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D7272973B62500AA4775 /* SwiftUIView.swift */; };
 		F434D72C2973B6EC00AA4775 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D72B2973B6EC00AA4775 /* PlayerView.swift */; };
 		F434D72E2973BBF800AA4775 /* Palpi-Logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F434D72D2973BBF800AA4775 /* Palpi-Logo.gif */; };
@@ -144,6 +146,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F408AE2029C2B41B00D0373A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionDelegate.swift; path = "../../../ImplementingTwoWayCommunicationUsingWatchConnectivity/SimpleWatchConnectivity WatchKit Extension/ExtensionDelegate.swift"; sourceTree = "<group>"; };
 		F434D7272973B62500AA4775 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		F434D72B2973B6EC00AA4775 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -213,6 +216,7 @@
 				F4BD573328B450A00036ACAD /* FirebaseAuth in Frameworks */,
 				F4F1AB3228DADFD60066F0CE /* HealthKit.framework in Frameworks */,
 				F4A3763C28B535EA009B1674 /* GoogleSignIn in Frameworks */,
+				F42118D929C0BE2100E6F1B5 /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +350,7 @@
 				F4BD56C428B3CDDF0036ACAD /* Assets.xcassets */,
 				F457A0FE28EDB867007F50DE /* GoogleService-Info.plist */,
 				F4BD56C628B3CDDF0036ACAD /* Preview Content */,
+				F408AE2029C2B41B00D0373A /* Settings.bundle */,
 			);
 			path = Palpi;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				F4A3763B28B535EA009B1674 /* GoogleSignIn */,
 				F4DE758A28ECBDE000FCEA28 /* FirebaseDatabase */,
 				F4DEB6B3299244F4007ED17A /* StatKit */,
+				F42118D829C0BE2100E6F1B5 /* PythonKit */,
 			);
 			productName = Palpi;
 			productReference = F4BD56BD28B3CDDD0036ACAD /* Palpi.app */;
@@ -639,6 +645,7 @@
 				F4BD573128B4509F0036ACAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F4A3763A28B535EA009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				F4DEB6B2299244F3007ED17A /* XCRemoteSwiftPackageReference "StatKit" */,
+				F42118D729C0BE2100E6F1B5 /* XCRemoteSwiftPackageReference "PythonKit" */,
 			);
 			productRefGroup = F4BD56BE28B3CDDD0036ACAD /* Products */;
 			projectDirPath = "";
@@ -664,6 +671,7 @@
 				F4BD56C828B3CDDF0036ACAD /* Preview Assets.xcassets in Resources */,
 				F4BD56C528B3CDDF0036ACAD /* Assets.xcassets in Resources */,
 				F457A0FF28EDB86E007F50DE /* GoogleService-Info.plist in Resources */,
+				F408AE2129C2B41B00D0373A /* Settings.bundle in Resources */,
 				F4FB7BBE28C1BE5C00267D7D /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1409,6 +1417,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F42118D729C0BE2100E6F1B5 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		F4A3763A28B535EA009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1436,6 +1452,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F42118D829C0BE2100E6F1B5 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F42118D729C0BE2100E6F1B5 /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
 		F4A3763B28B535EA009B1674 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4A3763A28B535EA009B1674 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;

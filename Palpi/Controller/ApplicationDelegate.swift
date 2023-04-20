@@ -166,26 +166,35 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
             if let unwrappedError = error {
                 print("could not enable background delivery KJ: \(unwrappedError)")
             }
-            if success {
-                print("background delivery enabled KJ")
-            }
+//            if success {
+//                print("imm")
+//            }
         }
         hkkit.healthStore.enableBackgroundDelivery(for: HKObjectType.categoryType(forIdentifier: .highHeartRateEvent)!, frequency: .immediate) { (success, error) in
             if let unwrappedError = error {
                 print("could not enable background delivery KJ: \(unwrappedError)")
             }
-            if success {
-                print("background delivery enabled KJ")
-            }
+//            if success {
+//                print("background delivery enabled KJ")
+//            }
         }
         hkkit.healthStore.enableBackgroundDelivery(for: HKObjectType.categoryType(forIdentifier: .lowHeartRateEvent)!, frequency: .immediate) { (success, error) in
             if let unwrappedError = error {
                 print("could not enable background delivery KJ: \(unwrappedError)")
             }
-            if success {
-                print("background delivery enabled KJ")
-            }
+//            if success {
+//                print("background delivery enabled KJ")
+//            }
         }
+        hkkit.healthStore.enableBackgroundDelivery(for: HKObjectType.categoryType(forIdentifier: .irregularHeartRhythmEvent)!, frequency: .immediate) { (success, error) in
+            if let unwrappedError = error {
+                print("could not enable background delivery KJ: \(unwrappedError)")
+            }
+//            if success {
+//                print("background delivery enabled KJ")
+//            }
+        }
+        
             if let hrq = hkkit.heartRateQuery {
                 self.healthStore.execute(hrq)
             }

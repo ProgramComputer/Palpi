@@ -105,11 +105,15 @@ class HKKit{
                     if type == .heartRate{
                         let heartRateUnit = HKUnit(from: "count/min")
                         let doubleResults = self.quantityToDouble(quantities: results as! [HKQuantitySample], unit: heartRateUnit)
+                        //TODO upload and compare with nearby devices
                         let calculatedSTD = standardDeviation(of: doubleResults, variable: \.self, from: .sample)
                         print("Std")
                         print(calculatedSTD)
                     }
-                    completion(results?[0] as? HKQuantitySample)
+                    //TODO return z-score from average of sample or from resting
+                    if(results != nil){
+                        completion(results?[0] as? HKQuantitySample)
+                    }
                 }
             
             self.healthStore.execute(query)

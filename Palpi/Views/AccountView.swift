@@ -41,7 +41,7 @@ struct AccountView: View{
                 
                 
                 Button(action: viewModel.signOut){
-                    Text("Sign out").foregroundColor(.white).padding().frame(maxWidth:.infinity).background(Color(.systemIndigo)).cornerRadius(12).padding()
+                    Text("Sign out").foregroundColor(.white).padding().frame(maxWidth:.infinity).background(Color(.systemRed)).cornerRadius(12).padding()
                 }
             }.navigationTitle("Palpi")
         }.navigationViewStyle(StackNavigationViewStyle())
