@@ -16,7 +16,7 @@ import WatchConnectivity
 class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDelegate,BluetoothReceiverDelegate {
     // MARK: - Properties
 
-    private let healthStore = HKHealthStore()
+    public let healthStore = HKHealthStore()
     private lazy var sessionDelegator: SessionDelegator = {
         return SessionDelegator()
     }()
@@ -24,7 +24,7 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
     @Published var modelData: ModelData = ModelData(){didSet {
          if oldValue.count < modelData.count {
              print(modelData.count)
-             notificationHandler.requestUserNotification(temperature: Measurement(value: Double(99), unit: UnitTemperature.celsius))
+             notificationHandler.requestUserNotification()
          }
        }
      }
@@ -33,7 +33,7 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
     var bluetoothSender: BluetoothSender!
     var bluetoothReceiver: BluetoothReceiver!
     private(set) var notificationHandler: NotificationHandler!
-    private var hkkit:HKKit!
+    public var hkkit:HKKit!
 
 
     var peripheralValue: Measurement<UnitTemperature> {
@@ -60,11 +60,11 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
         hkkit = HKKit();
 
         /// Initialize the Bluetooth sender with a service and a characteristic.
-        let service = CBMutableService(type: BluetoothConstants.serviceUUID, primary: true)
-        service.characteristics = [characteristic]
-        
-        bluetoothSender = BluetoothSender(service: service)
-        bluetoothSender.delegate = self
+//        let service = CBMutableService(type: BluetoothConstants.serviceUUID, primary: true)
+//        service.characteristics = [characteristic]
+//
+//        bluetoothSender = BluetoothSender(service: service)
+//        bluetoothSender.delegate = self
         
         
         bluetoothReceiver = BluetoothReceiver(
@@ -73,7 +73,6 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
         )
         
         bluetoothReceiver.delegate = self
-        
         
         // Trigger WCSession activation at the early phase of app launching.
         //
@@ -152,8 +151,31 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
         }
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
+        let center = UNUserNotificationCenter.current()
+         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+             guard granted else{return}
+
+             UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
+
+             switch setttings.soundSetting{
+                  case .enabled:
+                       print("enabled sound setting")
+
+                  case .disabled:
+                        print("setting has been disabled")
+
+                  case .notSupported:
+                        print("something vital went wrong here")
+             @unknown default:
+                 print("Unknown")
+                 
+             }
+             }
+
+         }
+         application.registerForRemoteNotifications()
         hkkit.subscribeToHeartBeatChanges()
+
       //  HealthKit.metadata
         guard let sampleType: HKSampleType =
                 /*HKObjectType.categoryType(forIdentifier: .highHeartRateEvent)*/ //TODO
@@ -190,14 +212,12 @@ class ApplicationDelegate: NSObject, UIApplicationDelegate, BluetoothSenderDeleg
             if let unwrappedError = error {
                 print("could not enable background delivery KJ: \(unwrappedError)")
             }
-//            if success {
-//                print("background delivery enabled KJ")
-//            }
+
         }
         
-            if let hrq = hkkit.heartRateQuery {
-                self.healthStore.execute(hrq)
-            }
+//            if let hrq = hkkit.heartRateQuery {
+//                self.healthStore.execute(hrq)
+//            }
 
         return true
     }

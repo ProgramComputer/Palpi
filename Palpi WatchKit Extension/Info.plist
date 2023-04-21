@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>App requested permission to save samples to the HealthKit store</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>View Heartrate Information</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionAttributes</key>
@@ -18,7 +14,10 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>bluetooth-central</string>
+		<string>location</string>
+		<string>remote-notification</string>
 	</array>
 	<key>WKBackgroundModes</key>
 	<array>

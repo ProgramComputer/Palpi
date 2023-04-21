@@ -20,6 +20,8 @@ struct PalpiApp: App {
         WindowGroup {
             NavigationView {
                 ContentView().environmentObject(delegate.modelData)//.environmentObject(delegate.bluetoothReceiver)
+            }.onAppear{
+                workoutManager.start()
             }
         }
 

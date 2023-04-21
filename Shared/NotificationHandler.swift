@@ -24,31 +24,27 @@ class NotificationHandler: NSObject, UNUserNotificationCenterDelegate {
         notificationCenter.delegate = self
     }
  
-    func requestUserNotification(temperature: Measurement<UnitTemperature>, elevated: Bool = false) {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
-              success, error in
-                  if !success {
-                      print("notification authorization is not granted")
-                  } else {
-                      let temperatureString = (Int(temperature.value) == -1) ? "--" : "\(Int(temperature.value))"
-                      let temperatureSymbol = temperature.unit.symbol
+    func requestUserNotification() {
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+//              success, error in
+//                  if !success {
+//                      print("notification authorization is not granted")
+//                      print(error)
+//                  } else {
+                      
 
                       let content = UNMutableNotificationContent()
                       content.title = "Heart Alert"
-                      if elevated{
-                          content.body = "Your heartRate elevated"
-                      }
-                      else{
-                          content.body = "You found a match"//"It is \(temperatureString)\(temperatureSymbol)"
-                      }
+                      content.body = "You found a match❤️"
+                      
                       content.sound = UNNotificationSound.default
                                
                       let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-                      let request = UNNotificationRequest(identifier: "temperaturealertnotification-01", content: content, trigger: trigger)
+                      let request = UNNotificationRequest(identifier: "matchnotification-01", content: content, trigger: trigger)
 
                       UNUserNotificationCenter.current().add(request)
-                  }
-        }
+//                  }
+//        }
     }
     
     // Display the notification even if the app is front-most.

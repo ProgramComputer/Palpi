@@ -28,7 +28,7 @@ struct LoginView: View {
                     .multilineTextAlignment(.center)
             )
             
-            Text("Find your heart's flutter").fontWeight(.light).multilineTextAlignment(.center).padding().foregroundColor(.indigo)
+            Text("Find your heart's flutter").fontWeight(.light).multilineTextAlignment(.center).padding().foregroundColor(.pink)
             
             Spacer()
             

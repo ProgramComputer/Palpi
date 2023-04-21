@@ -18,7 +18,7 @@ struct FindView: View {
 //            }
 //        }
             NavigationStack {
-                Polar(connections: $data.count) //TODO: currently receiving potential matches
+                Polar(connections: $data.count) 
                     .navigationBarTitle("Search").multilineTextAlignment(.center)
                     .toolbar {
                         

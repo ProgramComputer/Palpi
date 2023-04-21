@@ -9,9 +9,13 @@
 import Foundation
 import HealthKit
 import StatKit
+import Firebase
+import WatchConnectivity
+
 //https://developer.apple.com/documentation/healthkit/hkhealthstore/1614175-enablebackgrounddelivery#discussion
 class HKKit{
     var notificationHandler = ApplicationDelegate.instance.notificationHandler
+    let modelData: ModelData = ApplicationDelegate.instance.modelData
 
     var heartRateQuery: HKObserverQuery?
     let healthStore = HKHealthStore();
@@ -28,8 +32,8 @@ class HKKit{
             sampleType: sampleType,
             predicate: nil) { [weak self] oQ, cH, error in
                 guard error == nil else {
-                    // print(error!)
-                    //  self.log.warn(error!)
+                    print(error!)
+                    // self.log.warn(error!)
                     return
                 }
                 /// When the completion is called, an other query is executed
@@ -62,7 +66,7 @@ class HKKit{
                             .doubleValue(for: heartRateUnit)
                         print(heartRate);
                         /// Updating the UI with the retrieved value
-                        self?.notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(0.0), unit: UnitTemperature.celsius),elevated: true)
+                       // self?.notificationHandler!.requestUserNotification()
                        // self?.heartRateLabel.text = ("\(Int(heartRate))")
                     }
                     cH();
@@ -96,25 +100,69 @@ class HKKit{
                 sampleType: sampleType,
                 predicate: predicate,
                 limit: Int(HKObjectQueryNoLimit),
-                sortDescriptors: [sortDescriptor]) { (_, results, error) in
+                sortDescriptors: [sortDescriptor]) { (_, results, error) in //TODO Windowed cross-correlation with more than 1 result
                     
                     guard error == nil else {
                         print("Error: \(error!.localizedDescription)")
                         return
                     }
-                    if type == .heartRate{
+                    //TODO return z-score from average of sample or from resting
+                    if( results != nil && !results!.isEmpty && type == .heartRate){
+                        print(BluetoothConstants.characteristicUUID.uuidString)
                         let heartRateUnit = HKUnit(from: "count/min")
                         let doubleResults = self.quantityToDouble(quantities: results as! [HKQuantitySample], unit: heartRateUnit)
-                        //TODO upload and compare with nearby devices
-                        let calculatedSTD = standardDeviation(of: doubleResults, variable: \.self, from: .sample)
-                        print("Std")
-                        print(calculatedSTD)
-                    }
-                    //TODO return z-score from average of sample or from resting
-                    if(results != nil){
+                        let dict = Dictionary(uniqueKeysWithValues: doubleResults.enumerated().map { ($0.offset.description, $0.element) })
+                        let ref = Database.database().reference()
+                        ref.child("data").child(BluetoothConstants.characteristicUUID.uuidString).setValue(dict){
+                            (error:Error?, ref:DatabaseReference) in
+                            if let error = error {
+                              print("Data could not be saved: \(error).")
+                            } else {
+                              print("Data saved successfully!")
+                            }
+                          }
+                        if(ApplicationDelegate.instance.bluetoothReceiver == nil){
+                            print("out")
+                            return
+                        }
+                        print(ApplicationDelegate.instance.bluetoothReceiver.bluetoothPoints)
+                        for element in ApplicationDelegate.instance.bluetoothReceiver!.bluetoothPoints{
+                            print("Inside")
+                        
+                            ref.child("data").child(element.actualUUID.uuidString).getData(completion: { error, snapshot in
+                                            guard error == nil else {
+                                                                                        print(error!.localizedDescription)
+                                                                                             return;
+                                                                                           }
+                                if let dict = snapshot?.value as? [Double]/*[String:Double] */{
+                                   // let peerArray = dict.sorted(by: { $0.key < $1.key }).map { $0.value }
+                                    let peerArray = dict;
+                                    print(dict)
+                                   let correlation =  crossCorrelation(x: doubleResults, y: peerArray)
+                                    print("Correlation pvalue \( correlation.pValue)")
+                                    if( correlation.pValue > 0 /*< 0.05*/){ //TODO commented out for DEMO
+                                        self.modelData.count += 1;
+                                        UserDefaults.standard.setValue(self.modelData.count, forKey: "count")
+                                       
+                                        let watchConnect: [String: Int] = ["count":self.modelData.count]
+                                        WCSession.default.transferUserInfo(watchConnect)
+                                    }
+                                }
+                                
+                            })
+
+                        }
                         completion(results?[0] as? HKQuantitySample)
                     }
-                }
+                       if(results != nil && !results!.isEmpty){
+                            print("heartrate")
+                           completion(results?[0] as? HKQuantitySample)
+
+                        }
+                    }
+   
+    
+
             
             self.healthStore.execute(query)
         }

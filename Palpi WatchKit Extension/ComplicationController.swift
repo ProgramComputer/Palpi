@@ -9,7 +9,8 @@ import ClockKit
 import os.log
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
-    
+    let modelData: ModelData = ExtensionDelegate.instance.modelData
+
     static func updateAllActiveComplications() {
         let complicationServer = CLKComplicationServer.sharedInstance()
         
@@ -88,39 +89,39 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     private func makeTemplate(for complication: CLKComplication, value: Int) -> CLKComplicationTemplate? {
            //TODO change this for Number of matches
         let temperature = Measurement(value: Double(value), unit: UnitTemperature.celsius)
-        let temperatureString = (Int(temperature.value) == -1) ? "--" : "\(Int(temperature.value))"
-        let temperatureSymbol = temperature.unit.symbol
+        let matchString = (Int(modelData.count) == 0) ? "--" : "\(Int(modelData.count))"
+        let matchSymbol = "❤️"
 
         switch complication.family {
         case .graphicCircular:
             return CLKComplicationTemplateGraphicCircularStackText(
-                line1TextProvider: CLKSimpleTextProvider(text: "\(temperatureString)"),
-                line2TextProvider: CLKSimpleTextProvider(text: temperatureSymbol)
+                line1TextProvider: CLKSimpleTextProvider(text: "\(matchString)"),
+                line2TextProvider: CLKSimpleTextProvider(text: matchSymbol)
             )
         case .graphicRectangular:
             return CLKComplicationTemplateGraphicRectangularStandardBody(
-                headerTextProvider: CLKSimpleTextProvider(text: "Temperature"),
-                body1TextProvider: CLKSimpleTextProvider(text: "\(temperatureString)\(temperatureSymbol)")
+                headerTextProvider: CLKSimpleTextProvider(text: "Matches"),
+                body1TextProvider: CLKSimpleTextProvider(text: "\(matchString)\(matchSymbol)")
             )
         case .circularSmall:
             return CLKComplicationTemplateCircularSmallStackText(
-                line1TextProvider: CLKSimpleTextProvider(text: "\(temperatureString)"),
-                line2TextProvider: CLKSimpleTextProvider(text: temperatureSymbol)
+                line1TextProvider: CLKSimpleTextProvider(text: "\(matchString)"),
+                line2TextProvider: CLKSimpleTextProvider(text: matchSymbol)
             )
         case .modularSmall:
             return CLKComplicationTemplateModularSmallStackText(
-                line1TextProvider: CLKSimpleTextProvider(text: "\(temperatureString)"),
-                line2TextProvider: CLKSimpleTextProvider(text: temperatureSymbol)
+                line1TextProvider: CLKSimpleTextProvider(text: "\(matchString)"),
+                line2TextProvider: CLKSimpleTextProvider(text: matchSymbol)
             )
         case .modularLarge:
             return CLKComplicationTemplateModularLargeStandardBody(
-                headerTextProvider: CLKSimpleTextProvider(text: "Temperature"),
-                body1TextProvider: CLKSimpleTextProvider(text: "\(temperatureString)\(temperatureSymbol)")
+                headerTextProvider: CLKSimpleTextProvider(text: "Matches"),
+                body1TextProvider: CLKSimpleTextProvider(text: "\(matchString)\(matchSymbol)")
             )
         case .graphicCorner:
             return CLKComplicationTemplateGraphicCornerStackText(
-                innerTextProvider: CLKSimpleTextProvider(text: "Temperature"),
-                outerTextProvider: CLKSimpleTextProvider(text: "\(temperatureString)\(temperatureSymbol)")
+                innerTextProvider: CLKSimpleTextProvider(text: "Matches"),
+                outerTextProvider: CLKSimpleTextProvider(text: "\(matchString)\(matchSymbol)")
             )
         default:
             return nil

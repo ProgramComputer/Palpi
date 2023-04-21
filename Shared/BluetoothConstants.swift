@@ -13,7 +13,7 @@ Bluetooth identifiers to use throughout the project.
 */
 
 import CoreBluetooth
-
+//Bluetooth constants is for the running device
 enum BluetoothConstants {
     
     /// An identifier for the sample service.
@@ -25,7 +25,6 @@ enum BluetoothConstants {
     /// The defaults key to use for persisting the most recently received data.
     static let receivedDataKey = "received-data"
     
-    //readRSSI from CBIPeripheral TODO
     
    
 }

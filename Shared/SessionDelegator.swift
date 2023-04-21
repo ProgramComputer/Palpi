@@ -58,12 +58,12 @@ class SessionDelegator: NSObject, WCSessionDelegate,ObservableObject {
 
         DispatchQueue.main.async{
 #if os(watchOS)
-            
-            if(count > 0 && count >   ExtensionDelegate.instance.modelData.count  )
-            {
+          //  print("COUNT printed " + count)
+          //  if(count > 0 && count >   ExtensionDelegate.instance.modelData.count  )
+        //    {
                 ExtensionDelegate.instance.modelData.count = count
-                ExtensionDelegate.instance.notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(99), unit: UnitTemperature.celsius))
-            }
+                ExtensionDelegate.instance.notificationHandler!.requestUserNotification()
+        //    }
             
           
 #endif

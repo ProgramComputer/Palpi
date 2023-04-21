@@ -22,7 +22,10 @@ enum BluetoothReceiverError: Error {
     case failedToDiscoverServices
     case failedToReceiveCharacteristicUpdate
 }
-
+struct BluetoothPoint: Hashable {
+  let assignedUUID: String
+  let actualUUID: CBUUID
+}
 
 class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -54,12 +57,13 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     
     var mustDisconnect = false
     
+    @Published var bluetoothPoints = Set<BluetoothPoint>()
     @Published var discoveredPeripherals = Set<CBPeripheral>()
     init(service: CBUUID, characteristic: CBUUID) {
         super.init()
         self.serviceUUID = service
         self.characteristicUUID = characteristic
-        self.centralManager = CBCentralManager(delegate: self, queue: nil)
+        self.centralManager = CBCentralManager(delegate: self, queue:nil)
         self.peripheralManager = CBPeripheralManager()
     }
     
@@ -67,11 +71,11 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         logger.info("scanning for new peripherals with service \(self.serviceUUID)")
         
         centralManager.scanForPeripherals(withServices: [serviceUUID], options: [
-            CBCentralManagerScanOptionAllowDuplicatesKey: true
+            CBCentralManagerScanOptionAllowDuplicatesKey: true //TODO false?
         ])
         
-        discoveredPeripherals.removeAll()
-            modelData.count = discoveredPeripherals.count
+        bluetoothPoints.removeAll()
+            modelData.count = bluetoothPoints.count
         isScanning = true
     }
     
@@ -116,25 +120,32 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
               
                 UserDefaults.standard.setValue(alertValue, forKey: BluetoothConstants.receivedDataKey)
                 discoveredPeripherals.insert(peripheral)
-                if(viewModel.state == .signedIn && modelData.count != discoveredPeripherals.count){
-                    notificationHandler!.requestUserNotification(temperature: Measurement(value: Double(alertValue), unit: UnitTemperature.celsius))
-                    modelData.count = discoveredPeripherals.count
-                    UserDefaults.standard.setValue(modelData.count, forKey: "count")
-
-                    let watchConnect: [String: Int] = ["count":modelData.count]
-                    WCSession.default.transferUserInfo(watchConnect)
+                if(viewModel.state == .signedIn && !bluetoothPoints.contains(where: { $0.assignedUUID == peripheral.identifier.uuidString })){
+                    central.connect(peripheral)
+                    peripheral.delegate = self
                 }
 
-            //    ComplicationController.updateAllActiveComplications()
-            }
-        } else if peripheral != connectedPeripheral, !discoveredPeripherals.contains(peripheral) {
-                logger.info("discovered \(peripheral.name ?? "unnamed peripheral")")
-                discoveredPeripherals.insert(peripheral)
-                modelData.count = discoveredPeripherals.count
+                if(viewModel.state == .signedIn && modelData.count != bluetoothPoints.count){
+                 //   notificationHandler!.requestUserNotification()
+//                    modelData.count = discoveredPeripherals.count
+//                    UserDefaults.standard.setValue(modelData.count, forKey: "count")
+//
+//                    let watchConnect: [String: Int] = ["count":modelData.count]
+//                    WCSession.default.transferUserInfo(watchConnect)
+                }
 
-
-                peripheral.delegate = self
+                //ComplicationController.updateAllActiveComplications()
             }
+        } //else if peripheral != connectedPeripheral, !discoveredPeripherals.contains(peripheral)
+        //{
+//                logger.info("discovered \(peripheral.name ?? "unnamed peripheral")")
+//
+//
+//                discoveredPeripherals.insert(peripheral)
+//                modelData.count = discoveredPeripherals.count
+//
+//
+//            }
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -143,8 +154,7 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         logger.info("connected to \(peripheral.name ?? "unnamed peripheral")")
-        discoveredPeripherals.remove(peripheral)
-            modelData.count = discoveredPeripherals.count
+            modelData.count = bluetoothPoints.count
 
 
         connectedPeripheral = peripheral
@@ -181,7 +191,7 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
         }
         
         logger.info("discovered service \(service.uuid) on \(peripheral.name ?? "unnamed peripheral")")
-        peripheral.discoverCharacteristics([characteristicUUID], for: service)
+        peripheral.discoverCharacteristics(nil, for: service)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
@@ -197,22 +207,31 @@ class BluetoothReceiver: NSObject, ObservableObject, CBCentralManagerDelegate, C
             delegate?.didFailWithError(.failedToDiscoverCharacteristics)
             return
         }
-        
         guard let characteristics = service.characteristics, !characteristics.isEmpty else {
             logger.info("no characteristics discovered on \(peripheral.name ?? "unnamed peripheral") for service \(service.description)")
             delegate?.didFailWithError(.failedToDiscoverCharacteristics)
             return
         }
         
-        if let characteristic = characteristics.first(where: { $0.uuid == characteristicUUID }) {
+        if let characteristic = characteristics.first(where: { $0.uuid == characteristics[0].uuid }) {
             logger.info("discovered characteristic \(characteristic.uuid) on \(peripheral.name ?? "unnamed peripheral")")
-            peripheral.readValue(for: characteristic) /// Immediately read the characteristic's value.
-        
-            if #available(watchOS 9.0, *) {
-                /// Subscribe to the characteristic.
-                peripheral.setNotifyValue(true, for: characteristic)
-                logger.info("setNotifyValue for \(characteristic.uuid) on \(peripheral.name ?? "unnamed peripheral")")
+           // peripheral.readValue(for: characteristic) /// Immediately read the characteristic's value.
+            bluetoothPoints.insert(BluetoothPoint(assignedUUID: peripheral.identifier.uuidString,actualUUID: characteristic.uuid))
+            print("found characteristic \(characteristic.uuid)")
+            centralManager.cancelPeripheralConnection(peripheral)
+            //HRQ
+//            if let hrq = ApplicationDelegate.instance.hkkit.heartRateQuery {
+//                print("Execute HRQ")
+//                ApplicationDelegate.instance.healthStore.execute(hrq)
+//            }
+            ApplicationDelegate.instance.hkkit.fetchLatestHeartRateSample(type: .heartRate) { sample in
+                print("fetched")
             }
+//            if #available(watchOS 9.0, *) {
+//                /// Subscribe to the characteristic.
+//                peripheral.setNotifyValue(true, for: characteristic)
+//                logger.info("setNotifyValue for \(characteristic.uuid) on \(peripheral.name ?? "unnamed peripheral")")
+//            }
 
         }
     }

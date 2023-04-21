@@ -85,7 +85,7 @@ class WorkoutManager: NSObject, ObservableObject {
 
         // Start workout session.
         healthStore.start(session!)
-
+         
         // Update state to started and inform delegates.
         state = .started
         delegate?.workoutManager(self, didChangeStateTo: state)

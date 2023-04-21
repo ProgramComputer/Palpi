@@ -10,6 +10,8 @@
 		F408AE2129C2B41B00D0373A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F408AE2029C2B41B00D0373A /* Settings.bundle */; };
 		F40B39062924C3D600AE6772 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB048228ED699E0085E9E4 /* NotificationHandler.swift */; };
 		F40B39082924E15F00AE6772 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */; };
+		F41B7F6C29F19B2F00DF0196 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41B7F6B29F19B2F00DF0196 /* NotificationView.swift */; };
+		F41B7F6E29F1DCE100DF0196 /* Correlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41B7F6D29F1DCE100DF0196 /* Correlate.swift */; };
 		F42118D929C0BE2100E6F1B5 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = F42118D829C0BE2100E6F1B5 /* PythonKit */; };
 		F434D7282973B62500AA4775 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D7272973B62500AA4775 /* SwiftUIView.swift */; };
 		F434D72C2973B6EC00AA4775 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434D72B2973B6EC00AA4775 /* PlayerView.swift */; };
@@ -45,7 +47,6 @@
 		F4BD56F228B3CDE00036ACAD /* PalpiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */; };
 		F4BD56F428B3CDE00036ACAD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F328B3CDE00036ACAD /* ContentView.swift */; };
 		F4BD56F628B3CDE00036ACAD /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F528B3CDE00036ACAD /* NotificationController.swift */; };
-		F4BD56F828B3CDE00036ACAD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F728B3CDE00036ACAD /* NotificationView.swift */; };
 		F4BD56FA28B3CDE00036ACAD /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD56F928B3CDE00036ACAD /* ComplicationController.swift */; };
 		F4BD56FC28B3CDE00036ACAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56FB28B3CDE00036ACAD /* Assets.xcassets */; };
 		F4BD56FF28B3CDE00036ACAD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BD56FE28B3CDE00036ACAD /* Preview Assets.xcassets */; };
@@ -148,6 +149,8 @@
 /* Begin PBXFileReference section */
 		F408AE2029C2B41B00D0373A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionDelegate.swift; path = "../../../ImplementingTwoWayCommunicationUsingWatchConnectivity/SimpleWatchConnectivity WatchKit Extension/ExtensionDelegate.swift"; sourceTree = "<group>"; };
+		F41B7F6B29F19B2F00DF0196 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		F41B7F6D29F1DCE100DF0196 /* Correlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlate.swift; sourceTree = "<group>"; };
 		F434D7272973B62500AA4775 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		F434D72B2973B6EC00AA4775 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		F434D72D2973BBF800AA4775 /* Palpi-Logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Palpi-Logo.gif"; sourceTree = "<group>"; };
@@ -178,7 +181,6 @@
 		F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalpiApp.swift; sourceTree = "<group>"; };
 		F4BD56F328B3CDE00036ACAD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F4BD56F528B3CDE00036ACAD /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		F4BD56F728B3CDE00036ACAD /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		F4BD56F928B3CDE00036ACAD /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		F4BD56FB28B3CDE00036ACAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4BD56FE28B3CDE00036ACAD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				F469B0882937AF2500F67806 /* HeartRateM.swift */,
 				F4DE758728EC9ADB00FCEA28 /* LikeModel.swift */,
 				F4DE758C28ECC21A00FCEA28 /* UUIDModel.swift */,
+				F41B7F6D29F1DCE100DF0196 /* Correlate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -395,9 +398,9 @@
 				F4F1AB2C28DADB2F0066F0CE /* Palpi WatchKit Extension.entitlements */,
 				F4BD56F128B3CDE00036ACAD /* PalpiApp.swift */,
 				F4BD56F328B3CDE00036ACAD /* ContentView.swift */,
+				F41B7F6B29F19B2F00DF0196 /* NotificationView.swift */,
 				F40B39072924E15F00AE6772 /* ExtensionDelegate.swift */,
 				F4BD56F528B3CDE00036ACAD /* NotificationController.swift */,
-				F4BD56F728B3CDE00036ACAD /* NotificationView.swift */,
 				F4BD56F928B3CDE00036ACAD /* ComplicationController.swift */,
 				F4BD56FB28B3CDE00036ACAD /* Assets.xcassets */,
 				F4BD570028B3CDE00036ACAD /* Info.plist */,
@@ -737,6 +740,7 @@
 			files = (
 				F4A3764228B53B73009B1674 /* GoogleSignInButton.swift in Sources */,
 				F4A3763928B534A4009B1674 /* AuthenticationViewModel.swift in Sources */,
+				F41B7F6E29F1DCE100DF0196 /* Correlate.swift in Sources */,
 				F4DE758D28ECC21A00FCEA28 /* UUIDModel.swift in Sources */,
 				F40B39062924C3D600AE6772 /* NotificationHandler.swift in Sources */,
 				F4BD56C328B3CDDD0036ACAD /* ContentView.swift in Sources */,
@@ -793,7 +797,7 @@
 				F4BD56F228B3CDE00036ACAD /* PalpiApp.swift in Sources */,
 				F4EB048828ED6B4E0085E9E4 /* BluetoothConstants.swift in Sources */,
 				F469B0832937AE0100F67806 /* WorkoutManager.swift in Sources */,
-				F4BD56F828B3CDE00036ACAD /* NotificationView.swift in Sources */,
+				F41B7F6C29F19B2F00DF0196 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,6 +980,8 @@
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = ComplicationController;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow app to always use Bluetooth in finding matches";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Allow app to always use Bluetooth in finding matches";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "View Heartrate Information";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App requested permission to save samples to the HealthKit store";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1013,6 +1019,8 @@
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = ComplicationController;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow app to always use Bluetooth in finding matches";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Allow app to always use Bluetooth in finding matches";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "View Heartrate Information";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App requested permission to save samples to the HealthKit store";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (

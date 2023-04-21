@@ -14,8 +14,8 @@ struct AccountView: View{
     private let user = GIDSignIn.sharedInstance.currentUser
     init() {
 
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.systemIndigo]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.systemPink]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.systemPink]
         }
     @Environment(\.presentationMode) var presentationMode
     @State private var isShowingSettingsView = false

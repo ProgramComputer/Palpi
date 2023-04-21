@@ -39,7 +39,7 @@ class BluetoothSender: NSObject, ObservableObject, CBPeripheralManagerDelegate {
             logger.warning("already advertising")
             return
         }
-        
+     
         peripheralManager.removeAllServices()
         peripheralManager.add(service)
         
@@ -65,6 +65,7 @@ class BluetoothSender: NSObject, ObservableObject, CBPeripheralManagerDelegate {
         }
         let characteristic = ApplicationDelegate.instance.characteristic
         logger.info("sending timely alert on characteristic: \(characteristic.uuid)")
+       
         
         let alertTemp = 100      // An alert for high temperatures.
         guard let data = try? JSONEncoder().encode(alertTemp) else {
@@ -88,6 +89,7 @@ class BluetoothSender: NSObject, ObservableObject, CBPeripheralManagerDelegate {
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
         logger.info("received read request for characteristic: \(request.characteristic.uuid)")
+
         if let responseData = delegate?.getDataFor(requestCharacteristic: request.characteristic) {
             request.value = responseData
             peripheral.respond(to: request, withResult: .success)

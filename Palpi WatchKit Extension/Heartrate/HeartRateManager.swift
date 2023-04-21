@@ -31,7 +31,6 @@ class HeartRateManager {
     init() {
         // Request authorization to read heart rate data.
         AuthorizationManager.requestAuthorization { (success) in
-            // TODO: Export error.
             print(success)
         }
     }

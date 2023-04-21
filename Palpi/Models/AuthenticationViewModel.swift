@@ -12,7 +12,7 @@ import CoreBluetooth
 //CITE - https://blog.codemagic.io/google-sign-in-firebase-authentication-using-swift/
 
 class AuthenticationViewModel: ObservableObject{
-    
+
     enum SignInState:Int{
         case signedIn
         case signedOut
@@ -81,8 +81,7 @@ class AuthenticationViewModel: ObservableObject{
                 
                 
                 
-                
-                
+    
                     
                     
                     
@@ -114,6 +113,8 @@ class AuthenticationViewModel: ObservableObject{
                                     return
                                 }
                                 print(json)
+                                print("json finished")
+                                
                                 json["id"] = snapshot.key
                                 let UUIDData = try JSONSerialization.data(withJSONObject: json)
                             
@@ -154,15 +155,31 @@ class AuthenticationViewModel: ObservableObject{
                             print(error)
                         }
                     ref.removeAllObservers()
+                    
 
                         //                databasePath.getData(completion:  { error, snapshot in
                         //                  guard error == nil else {
                         //                    print(error!.localizedDescription)
                         //                    return;
                         //                  }
-                        
-                        
-                        
+                    
+                    let characteristic = CBMutableCharacteristic(
+                        type: BluetoothConstants.characteristicUUID,
+                        properties: [.read, .write, .notify],
+                        value: nil,
+                        permissions: [.readable, .writeable]
+                    )
+                    let service = CBMutableService(type: BluetoothConstants.serviceUUID, primary: true)
+                    service.characteristics = [characteristic]
+                   
+                   
+                    ApplicationDelegate.instance.bluetoothSender = BluetoothSender(service: service)
+                    ApplicationDelegate.instance.bluetoothSender.delegate = ApplicationDelegate.instance.self
+                   //HRQ
+                    //            if let hrq = ApplicationDelegate.instance.hkkit.heartRateQuery {
+                    //                print("Execute HRQ")
+                    //                ApplicationDelegate.instance.healthStore.execute(hrq)
+                    //            }
                     }) { error in
                         print(error.localizedDescription)
                       };
